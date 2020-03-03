@@ -27,8 +27,8 @@
         ],
         "type": "Address",
         "nullable": false,
-        "owner": true,
-        "unique": true
+        "owner": false,
+        "unique": false
       }
     },
     "hooks": {},
@@ -43,5 +43,5 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "65e317497b2708caffaa4f77f1c7e851"
+  "hash": "4bbf478ddf79c9d6dbf468373507e12b"
 }

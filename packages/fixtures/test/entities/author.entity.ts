@@ -22,6 +22,6 @@ export class Author extends BaseEntity {
   )
   books = new Collection<Book>(this);
 
-  @OneToOne()
+  @OneToOne(() => Address, addr => addr.author)
   address!: Address;
 }
