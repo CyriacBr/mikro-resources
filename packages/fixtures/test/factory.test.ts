@@ -48,7 +48,7 @@ describe(`Factory`, () => {
                 expect(() => factory.make(WithBadEnum).get()).toThrow();
             });
             it(`works with @Fixture({ enum: EnumType })`, () => {
-                expect(["GOOD","BAD","NEUTRAL"].includes(author.mood.toString())).toBe(true);
+                expect(["GOOD","BAD","NEUTRAL", 0, 1, 2].includes(author.mood.toString())).toBe(true);
             });
         })
     });
@@ -71,7 +71,7 @@ describe(`Factory`, () => {
 
         it(`m:1`, () => {
             const book = factory.make(Book).get();
-            
+
             expect(book.author).toBeInstanceOf(Author);
         });
     });
