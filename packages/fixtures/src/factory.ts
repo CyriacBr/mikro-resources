@@ -21,20 +21,12 @@ export class FixturesFactory {
     const meta = this.orm.getMetadata();
     const name = Utils.className(entityName);
     const entityMeta = meta.get(name);
-    const entity = this._make(entityMeta, entityName, propsToIgnore) as Entity;
     const result = {
-      one: () => entity,
+      one: () => this._make(entityMeta, entityName, propsToIgnore) as Entity,
       many: (x: number) => {
-        const entities =
-          x > 0
-            ? [
-                entity,
-                ...[...Array(x).keys()].map(() =>
-                  this._make(entityMeta, entityName, propsToIgnore)
-                ),
-              ]
-            : [];
-        return entities;
+        return [...Array(x).keys()].map(() =>
+          this._make(entityMeta, entityName, propsToIgnore)
+        );
       },
     };
     return result;
