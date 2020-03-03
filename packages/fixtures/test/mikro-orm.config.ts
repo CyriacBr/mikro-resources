@@ -4,8 +4,8 @@ import { BaseEntity } from './entities/base.entity';
 
 export default {
   entities: [BaseEntity, Author, Book],
-  dbName: 'mikro_resources_fixture_test',
-  type: 'mysql',
+  dbName: 'test.db',
+  type: 'sqlite',
   debug: true,
   cache: {
     enabled: true,
