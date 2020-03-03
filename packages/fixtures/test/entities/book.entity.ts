@@ -1,4 +1,4 @@
-import { IdEntity, PrimaryKey, Property, ManyToOne, Enum } from "mikro-orm";
+import { IdEntity, PrimaryKey, Property, ManyToOne, Enum, Entity } from "mikro-orm";
 import { Author } from './author.entity';
 import { BaseEntity } from './base.entity';
 
@@ -8,6 +8,7 @@ export enum BookType {
   "sci-fi"
 }
 
+@Entity()
 export class Book extends BaseEntity {
   @Property()
   name!: string;

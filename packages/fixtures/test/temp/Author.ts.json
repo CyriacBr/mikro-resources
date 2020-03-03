@@ -17,17 +17,31 @@
           "merge"
         ],
         "type": "Book"
+      },
+      "address": {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "type": "Address",
+        "nullable": false,
+        "owner": true,
+        "unique": true
       }
     },
     "hooks": {},
     "indexes": [],
     "uniques": [],
     "path": "./test/entities/author.entity.ts",
+    "name": "Author",
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
-    "useCache": true
+    "useCache": true,
+    "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "9cc1f073b905757f3eaff59a2480c85e"
+  "hash": "65e317497b2708caffaa4f77f1c7e851"
 }

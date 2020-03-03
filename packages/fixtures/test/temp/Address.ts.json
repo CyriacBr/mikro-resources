@@ -1,9 +1,9 @@
 {
   "data": {
-    "className": "Book",
+    "className": "Address",
     "properties": {
-      "name": {
-        "name": "name",
+      "city": {
+        "name": "city",
         "reference": "scalar",
         "getter": false,
         "setter": false,
@@ -11,32 +11,28 @@
       },
       "author": {
         "name": "author",
-        "reference": "m:1",
+        "reference": "1:1",
         "cascade": [
           "persist",
           "merge"
         ],
         "type": "Author",
-        "nullable": false
-      },
-      "type": {
-        "name": "type",
-        "reference": "scalar",
-        "enum": true,
-        "type": "enum"
+        "nullable": false,
+        "owner": true,
+        "unique": true
       }
     },
     "hooks": {},
     "indexes": [],
     "uniques": [],
-    "path": "./test/entities/book.entity.ts",
-    "name": "Book",
+    "path": "./test/entities/address.entity.ts",
+    "name": "Address",
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
-    "collection": "book"
+    "collection": "address"
   },
-  "origin": "./test/entities/book.entity.ts",
-  "hash": "c4890add07766153177c017465d8fbc6"
+  "origin": "./test/entities/address.entity.ts",
+  "hash": "0e804c1260ed15bfbd765db8da31b3cc"
 }

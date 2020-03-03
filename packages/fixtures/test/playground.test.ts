@@ -15,9 +15,6 @@ describe(`Playground`, () => {
         // const authorCached = await cache.get("Author.ts");
         // console.log('authorCached :', authorCached);
 
-        const authorMeta2 = wrap(Author.prototype).__meta;
-        console.log('authorMeta2 :', authorMeta2);
-
         //await orm.em.getRepository(Author).findAll();
         const meta = orm.getMetadata();
         const authorMeta = meta.get('Author');
