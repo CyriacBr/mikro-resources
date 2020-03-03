@@ -4,6 +4,7 @@ import {
   Utils,
   EntityMetadata,
   EntityProperty,
+  Collection,
 } from 'mikro-orm';
 import { FixtureMetadata, FixtureOptions } from './decorator';
 import * as faker from 'faker';
@@ -33,7 +34,7 @@ export class FixturesFactory {
             ? [
                 entity,
                 ...[...Array(x).keys()].map(() =>
-                  this.make(entityName, propsToIgnore).get()
+                  this._make(entityMeta, entityName, propsToIgnore)
                 ),
               ]
             : [];
@@ -61,35 +62,42 @@ export class FixturesFactory {
       ];
       if (propsToIgnore.includes(key)) continue;
       if (this._shouldIgnoreProperty(fixtureMeta, prop)) continue;
-      entity[key] = this._makeProperty(fixtureMeta, prop, entityMeta);
+      this._makeProperty(entity, fixtureMeta, prop, entityMeta);
     }
     return entity;
   }
 
   _makeProperty(
+    entity: any,
     fixtureMeta: FixtureOptions,
     prop: EntityProperty,
     entityMeta: EntityMetadata
   ) {
     if (typeof fixtureMeta === 'function') {
-      return fixtureMeta(faker);
+      entity[prop.name] = fixtureMeta(faker);
+      return;
     } else if (typeof fixtureMeta === 'string') {
-      return faker.fake(fixtureMeta);
+      entity[prop.name] = faker.fake(fixtureMeta);
+      return;
     }
     // Auto
     switch (prop.reference) {
       case 'scalar':
-        return this._makeScalarProperty(fixtureMeta, prop, entityMeta);
+        this._makeScalarProperty(entity, fixtureMeta, prop, entityMeta);
+        return;
       case '1:m':
-        return this._makeOneToManyProperty(fixtureMeta, prop, entityMeta);
+        this._makeOneToManyProperty(entity, fixtureMeta, prop, entityMeta);
+        return;
       case 'm:1':
-        return this._makeManyToOneProperty(fixtureMeta, prop, entityMeta);
+        this._makeManyToOneProperty(entity, fixtureMeta, prop, entityMeta);
+        return;
       case '1:1':
-        return this._makeOneToOneProperty(fixtureMeta, prop, entityMeta);
+        this._makeOneToOneProperty(entity, fixtureMeta, prop, entityMeta);
+        return;
       default:
         break;
     }
-    return null;
+    return this.logger.error(`Cannot handle this property`, prop);
   }
 
   _shouldIgnoreProperty(fixtureMeta: FixtureOptions, prop: EntityProperty) {
@@ -100,54 +108,78 @@ export class FixturesFactory {
   }
 
   _makeScalarProperty(
+    entity: any,
     fixtureMeta: FixtureOptions,
     prop: EntityProperty,
     entityMeta: EntityMetadata
   ) {
     switch (prop.type) {
       case 'string':
-        return faker.random.word();
+        entity[prop.name] = faker.random.word();
+        return;
       case 'number':
-        return faker.random.number();
+        entity[prop.name] = faker.random.number();
+        return;
       case 'boolean':
-        return faker.random.boolean();
+        entity[prop.name] = faker.random.boolean();
+        return;
       case 'Date':
-        return faker.date.recent();
+        entity[prop.name] = faker.date.recent();
+        return;
       case 'enum':
         if (typeof fixtureMeta === 'object' && !!fixtureMeta.enum) {
-          return faker.random.arrayElement(
+          entity[prop.name] = faker.random.arrayElement(
             Utils.extractEnumValues(fixtureMeta.enum)
           );
+          return;
         }
-        return this.logger.error(
+        this.logger.error(
           `Can't generate enums without assistance. Use @Fixture({ enum: EnumType })`
         );
+        break;
       default:
         break;
     }
-    return null;
+    this.logger.error(`Can't generate a value for this scalar`, prop);
   }
 
   _makeOneToManyProperty(
+    entity: any,
     fixtureMeta: FixtureOptions,
     prop: EntityProperty,
     entityMeta: EntityMetadata
-  ) {}
+  ) {
+    const refSideProperty =
+      prop.mappedBy || this._findMappedBy(entityMeta, prop, 'm:1');
+    const amount =
+      typeof fixtureMeta === 'object'
+        ? faker.random.number({
+            min: fixtureMeta.min || 1,
+            max: fixtureMeta.max || 5,
+          })
+        : faker.random.number({ min: 1, max: 5 });
+    const elements = [...Array(amount).keys()].map(() =>
+      this.make(prop.type, [refSideProperty]).get()
+    );
+    (entity[prop.name] as Collection<any>).add(...elements);
+  }
 
   _makeManyToOneProperty(
+    entity: any,
     fixtureMeta: FixtureOptions,
     prop: EntityProperty,
     entityMeta: EntityMetadata
   ) {}
 
   _makeOneToOneProperty(
+    entity: any,
     fixtureMeta: FixtureOptions,
     prop: EntityProperty,
     entityMeta: EntityMetadata
   ) {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:1');
-    return this.make(prop.type, [refSideProperty]).get();
+    entity[prop.name] = this.make(prop.type, [refSideProperty]).get();
   }
 
   _findMappedBy(

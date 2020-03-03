@@ -22,6 +22,15 @@
         "enum": true,
         "type": "enum"
       },
+      "books": {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "type": "Book"
+      },
       "address": {
         "name": "address",
         "reference": "1:1",
@@ -47,5 +56,5 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "45ff94c1e2077fca294f368a63c4ddf7"
+  "hash": "59f61f9ca80f2d5178cc162d9bac3a89"
 }

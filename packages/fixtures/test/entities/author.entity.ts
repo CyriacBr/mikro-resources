@@ -31,11 +31,12 @@ export class Author extends BaseEntity {
   @Enum()
   mood!: Mood;
 
-//   @OneToMany(
-//     () => Book,
-//     book => book.author
-//   )
-//   books = new Collection<Book>(this);
+  @Fixture({ min: 3, max: 3})
+  @OneToMany(
+    () => Book,
+    book => book.author
+  )
+  books = new Collection<Book>(this);
 
   @OneToOne(
     () => Address,

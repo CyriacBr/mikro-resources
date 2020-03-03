@@ -1,4 +1,4 @@
-import { MikroORM, FileCacheAdapter, wrap } from 'mikro-orm';
+import { MikroORM, FileCacheAdapter, wrap, Utils, Collection } from 'mikro-orm';
 import ormConfig from './mikro-orm.config';
 import { join } from 'path';
 import { Author } from './entities/author.entity';
@@ -61,6 +61,11 @@ describe(`Factory`, () => {
 
         it(`1:1`, () => {
             expect(author.address).toBeInstanceOf(Address);
+        });
+
+        it(`1:m`, () => {
+            expect(author.books).toBeInstanceOf(Collection);
+            expect(author.books.length).toBe(3);
         });
     });
 })
