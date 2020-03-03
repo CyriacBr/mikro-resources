@@ -9,26 +9,18 @@
         "setter": false,
         "type": "string"
       },
-      "books": {
-        "name": "books",
-        "reference": "1:m",
-        "cascade": [
-          "persist",
-          "merge"
-        ],
-        "type": "Book"
+      "age": {
+        "name": "age",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
       },
-      "address": {
-        "name": "address",
-        "reference": "1:1",
-        "cascade": [
-          "persist",
-          "merge"
-        ],
-        "type": "Address",
-        "nullable": false,
-        "owner": false,
-        "unique": false
+      "mood": {
+        "name": "mood",
+        "reference": "scalar",
+        "enum": true,
+        "type": "enum"
       }
     },
     "hooks": {},
@@ -43,5 +35,5 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "4bbf478ddf79c9d6dbf468373507e12b"
+  "hash": "901b9055f1c8fc622626b0a7825dd255"
 }

@@ -9,6 +9,19 @@
         "setter": false,
         "type": "string"
       },
+      "onSale": {
+        "name": "onSale",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "boolean"
+      },
+      "type": {
+        "name": "type",
+        "reference": "scalar",
+        "enum": true,
+        "type": "enum"
+      },
       "author": {
         "name": "author",
         "reference": "m:1",
@@ -18,12 +31,6 @@
         ],
         "type": "Author",
         "nullable": false
-      },
-      "type": {
-        "name": "type",
-        "reference": "scalar",
-        "enum": true,
-        "type": "enum"
       }
     },
     "hooks": {},
@@ -38,5 +45,5 @@
     "collection": "book"
   },
   "origin": "./test/entities/book.entity.ts",
-  "hash": "c4890add07766153177c017465d8fbc6"
+  "hash": "46f0882cd9c2017f69b23e6fc47114b3"
 }

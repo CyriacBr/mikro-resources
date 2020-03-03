@@ -1,0 +1,25 @@
+{
+  "data": {
+    "className": "WithBadEnum",
+    "properties": {
+      "enum": {
+        "name": "enum",
+        "reference": "scalar",
+        "enum": true,
+        "type": "enum"
+      }
+    },
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/with-bad-enum.entity.ts",
+    "name": "WithBadEnum",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "with_bad_enum"
+  },
+  "origin": "./test/entities/with-bad-enum.entity.ts",
+  "hash": "e30a4e053b07c02de64ccdd40019158b"
+}

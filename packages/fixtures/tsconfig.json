@@ -2,6 +2,7 @@
   "include": ["src", "types", "test"],
   "compilerOptions": {
     "experimentalDecorators": true,
+    "downlevelIteration": true,
     "module": "commonjs",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
