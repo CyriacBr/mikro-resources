@@ -23,12 +23,8 @@ export class FixturesFactory {
     const entityMeta = meta.get(name);
     const entity = this._make(entityMeta, entityName, propsToIgnore) as Entity;
     const result = {
-      get: () => entity,
-      persist: async () => {
-        await this.orm.em.persistAndFlush(entity);
-        return entity;
-      },
-      times: (x: number) => {
+      one: () => entity,
+      many: (x: number) => {
         const entities =
           x > 0
             ? [
@@ -38,13 +34,7 @@ export class FixturesFactory {
                 ),
               ]
             : [];
-        return {
-          get: () => entities,
-          persist: async () => {
-            await this.orm.em.persistAndFlush(entities);
-            return entities;
-          },
-        };
+        return entities;
       },
     };
     return result;
@@ -163,7 +153,7 @@ export class FixturesFactory {
           })
         : faker.random.number({ min: 1, max: 5 });
     const elements = [...Array(amount).keys()].map(() =>
-      this.make(prop.type, [refSideProperty]).get()
+      this.make(prop.type, [refSideProperty]).one()
     );
     (entity[prop.name] as Collection<any>).add(...elements);
   }
@@ -176,7 +166,7 @@ export class FixturesFactory {
   ) {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:m');
-    entity[prop.name] = this.make(prop.type, [refSideProperty]).get();
+    entity[prop.name] = this.make(prop.type, [refSideProperty]).one();
   }
 
   _makeOneToOneProperty(
@@ -187,7 +177,7 @@ export class FixturesFactory {
   ) {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:1');
-    entity[prop.name] = this.make(prop.type, [refSideProperty]).get();
+    entity[prop.name] = this.make(prop.type, [refSideProperty]).one();
   }
 
   _findMappedBy(

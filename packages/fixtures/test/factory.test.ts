@@ -28,7 +28,7 @@ describe(`Factory`, () => {
     let author: Author;
 
     beforeAll(() => {
-      author = factory.make(Author).get();
+      author = factory.make(Author).one();
     });
 
     it(`string`, () => {
@@ -56,8 +56,7 @@ describe(`Factory`, () => {
     let author: Author;
 
     beforeAll(() => {
-      author = factory.make(Author).get();
-      console.log('author :', author);
+      author = factory.make(Author).one();
     });
 
     it(`1:1`, () => {
@@ -70,7 +69,7 @@ describe(`Factory`, () => {
     });
 
     it(`m:1`, () => {
-      const book = factory.make(Book).get();
+      const book = factory.make(Book).one();
 
       expect(book.author).toBeInstanceOf(Author);
     });

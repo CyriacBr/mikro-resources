@@ -15,7 +15,7 @@ describe(`Playground`, () => {
     const authorMeta = meta.get('Author');
     const addressMeta = meta.get('Address');
     const bookMeta = meta.get('Book');
-    console.log('bookMeta :', bookMeta);
+    //console.log('bookMeta :', bookMeta);
     //console.log('authorMeta :', authorMeta);
     //console.log('addressMeta :', addressMeta);
   });

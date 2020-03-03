@@ -33,8 +33,7 @@
   "scripts": {
     "start": "cyriacbr-tsdx watch",
     "build": "cyriacbr-tsdx build",
-    "test": "cyriacbr-tsdx test",
-    "lint": "cyriacbr-tsdx lint",
+    "test": "jest",
     "release": "standard-version"
   },
   "module": "dist/fixtures.esm.js",
