@@ -1,0 +1,33 @@
+{
+  "data": {
+    "className": "Author",
+    "properties": {
+      "name": {
+        "name": "name",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      "books": {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "type": "Book"
+      }
+    },
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/author.entity.ts",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true
+  },
+  "origin": "./test/entities/author.entity.ts",
+  "hash": "9cc1f073b905757f3eaff59a2480c85e"
+}
