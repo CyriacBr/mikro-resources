@@ -1,9 +1,11 @@
 export type FixtureOptions =
   | string
-  | (() => string)
+  | ((faker?: Faker.FakerStatic) => string)
   | {
       ignore?: boolean;
       enum?: object;
+      min?: number;
+      max?: number;
     };
 
 export const FixtureMetadata: {
