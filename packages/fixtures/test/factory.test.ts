@@ -17,6 +17,7 @@ describe(`Factory`, () => {
     await orm.getSchemaGenerator().createSchema();
     factory = new FixturesFactory(orm);
   });
+
   afterAll(() => orm.close());
 
   it(`orm exists`, () => {
@@ -25,6 +26,7 @@ describe(`Factory`, () => {
 
   describe(`scalar properties`, () => {
     let author: Author;
+
     beforeAll(() => {
       author = factory.make(Author).get();
     });
@@ -52,6 +54,7 @@ describe(`Factory`, () => {
 
   describe(`relations`, () => {
     let author: Author;
+
     beforeAll(() => {
       author = factory.make(Author).get();
       console.log('author :', author);

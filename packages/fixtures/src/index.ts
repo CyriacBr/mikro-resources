@@ -1,1 +1,1 @@
-import { Configuration } from "mikro-orm";
+import { Configuration } from 'mikro-orm';

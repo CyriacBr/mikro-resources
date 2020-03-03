@@ -11,7 +11,7 @@ export default {
   debug: true,
   cache: {
     enabled: true,
-    pretty: true, 
-    options: { cacheDir: process.cwd() + '/test/temp' }
-  }
+    pretty: true,
+    options: { cacheDir: process.cwd() + '/test/temp' },
+  },
 };

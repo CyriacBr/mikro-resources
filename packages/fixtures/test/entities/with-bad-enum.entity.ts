@@ -1,7 +1,4 @@
-import {
-  Entity,
-  Enum,
-} from 'mikro-orm';
+import { Entity, Enum } from 'mikro-orm';
 import { BaseEntity } from './base.entity';
 
 export enum FooEnum {

@@ -30,7 +30,7 @@ export class Author extends BaseEntity {
   @Enum()
   mood!: Mood;
 
-  @Fixture({ min: 3, max: 3})
+  @Fixture({ min: 3, max: 3 })
   @OneToMany(
     () => Book,
     book => book.author
