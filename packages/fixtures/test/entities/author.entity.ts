@@ -37,9 +37,9 @@ export class Author extends BaseEntity {
 //   )
 //   books = new Collection<Book>(this);
 
-//   @OneToOne(
-//     () => Address,
-//     addr => addr.author
-//   )
-//   address!: Address;
+  @OneToOne(
+    () => Address,
+    addr => addr.author
+  )
+  address!: Address;
 }

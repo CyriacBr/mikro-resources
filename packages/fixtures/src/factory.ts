@@ -147,7 +147,7 @@ export class FixturesFactory {
   ) {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:1');
-    return this.make(prop.type, [refSideProperty]);
+    return this.make(prop.type, [refSideProperty]).get();
   }
 
   _findMappedBy(

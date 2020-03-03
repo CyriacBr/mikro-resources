@@ -21,6 +21,18 @@
         "reference": "scalar",
         "enum": true,
         "type": "enum"
+      },
+      "address": {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "type": "Address",
+        "nullable": false,
+        "owner": false,
+        "unique": false
       }
     },
     "hooks": {},
@@ -35,5 +47,5 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "901b9055f1c8fc622626b0a7825dd255"
+  "hash": "45ff94c1e2077fca294f368a63c4ddf7"
 }

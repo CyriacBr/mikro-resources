@@ -4,6 +4,7 @@ import { join } from 'path';
 import { Author } from './entities/author.entity';
 import { FixturesFactory } from '../src/factory';
 import { WithBadEnum } from './entities/with-bad-enum.entity';
+import { Address } from './entities/address.entity';
 
 describe(`Factory`, () => {
     let orm: MikroORM;
@@ -25,7 +26,6 @@ describe(`Factory`, () => {
         let author: Author;
         beforeAll(() => {
             author = factory.make(Author).get();
-            console.log('author :', author);
         });
 
         it(`string`, () => {
@@ -50,5 +50,17 @@ describe(`Factory`, () => {
                 expect(["GOOD","BAD","NEUTRAL"].includes(author.mood.toString())).toBe(true);
             });
         })
+    });
+
+    describe(`relations`, () => {
+        let author: Author;
+        beforeAll(() => {
+            author = factory.make(Author).get();
+            console.log('author :', author);
+        });
+
+        it(`1:1`, () => {
+            expect(author.address).toBeInstanceOf(Address);
+        });
     });
 })
