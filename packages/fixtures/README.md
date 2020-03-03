@@ -2,7 +2,7 @@
 
 # @mikro-resources/fixture
 
-This package generates fixtures of your mikro-orm entities on the fly, using `fakerjs`.  
+This package generates fixtures of your mikro-orm entities on the fly, using `faker.js`.  
 `@mikro-resources/fixture` will automatically handle all fields and relations of your entities, but you can provide custom values as well.
 
 ## Usage
@@ -64,3 +64,4 @@ export class Author extends BaseEntity {
   address!: Address;
 }
 ```
+You can learn more about the usage of faker.js [here](https://www.npmjs.com/package/faker).
