@@ -5,6 +5,7 @@ import { Author } from './entities/author.entity';
 import { FixturesFactory } from '../src/factory';
 import { WithBadEnum } from './entities/with-bad-enum.entity';
 import { Address } from './entities/address.entity';
+import { Book } from './entities/book.entity';
 
 describe(`Factory`, () => {
     let orm: MikroORM;
@@ -66,6 +67,12 @@ describe(`Factory`, () => {
         it(`1:m`, () => {
             expect(author.books).toBeInstanceOf(Collection);
             expect(author.books.length).toBe(3);
+        });
+
+        it(`m:1`, () => {
+            const book = factory.make(Book).get();
+            
+            expect(book.author).toBeInstanceOf(Author);
         });
     });
 })

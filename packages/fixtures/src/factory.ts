@@ -169,7 +169,11 @@ export class FixturesFactory {
     fixtureMeta: FixtureOptions,
     prop: EntityProperty,
     entityMeta: EntityMetadata
-  ) {}
+  ) {
+    const refSideProperty =
+      prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:m');
+    entity[prop.name] = this.make(prop.type, [refSideProperty]).get();
+  }
 
   _makeOneToOneProperty(
     entity: any,
