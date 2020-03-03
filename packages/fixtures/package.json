@@ -1,6 +1,27 @@
 {
-  "version": "0.1.0",
+  "version": "0.8.0",
+  "name": "@mikro-resources/fixtures",
+  "description": "A mikro-orm helper to generate fixtures of your entities on the fly or for seeding your DB",
+  "author": "CyriacBr",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/CyriacBr/mikro-resources.git"
+  },
   "license": "MIT",
+  "keywords": [
+    "orm",
+    "mikro-orm",
+    "mikroOrm",
+    "fixture",
+    "nestjs",
+    "seed",
+    "database",
+    "javascript",
+    "typescript",
+    "js",
+    "ts",
+    "entity"
+  ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -13,28 +34,14 @@
     "start": "cyriacbr-tsdx watch",
     "build": "cyriacbr-tsdx build",
     "test": "cyriacbr-tsdx test",
-    "lint": "cyriacbr-tsdx lint"
+    "lint": "cyriacbr-tsdx lint",
+    "release": "standard-version"
   },
-  "peerDependencies": {
-    "mikro-orm": "^3.3.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "cyriacbr-tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "fixtures",
-  "author": "CyriacBr",
   "module": "dist/fixtures.esm.js",
   "devDependencies": {
     "@cyriacbr/tsdx": "^0.12.35",
     "@types/jest": "^25.1.3",
+    "@types/faker": "^4.1.10",
     "chalk": "^3.0.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
@@ -52,7 +59,6 @@
     ]
   },
   "dependencies": {
-    "@types/faker": "^4.1.10",
     "chalk": "^3.0.0",
     "faker": "^4.1.0"
   }
