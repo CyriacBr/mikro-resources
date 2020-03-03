@@ -20,7 +20,7 @@
         "name": "mood",
         "reference": "scalar",
         "enum": true,
-        "type": "enum"
+        "type": "Mood"
       },
       "books": {
         "name": "books",
@@ -56,5 +56,5 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "59f61f9ca80f2d5178cc162d9bac3a89"
+  "hash": "b27d6a81c01bf944add232813afe45ff"
 }

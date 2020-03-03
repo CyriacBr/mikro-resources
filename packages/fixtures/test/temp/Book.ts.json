@@ -20,7 +20,7 @@
         "name": "type",
         "reference": "scalar",
         "enum": true,
-        "type": "enum"
+        "type": "BookType"
       },
       "author": {
         "name": "author",

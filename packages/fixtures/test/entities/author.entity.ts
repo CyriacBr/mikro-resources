@@ -27,7 +27,6 @@ export class Author extends BaseEntity {
   @Property()
   age!: number;
 
-  @Fixture({ enum: Mood })
   @Enum()
   mood!: Mood;
 

@@ -6,7 +6,7 @@
         "name": "enum",
         "reference": "scalar",
         "enum": true,
-        "type": "enum"
+        "type": "FooEnum"
       }
     },
     "hooks": {},

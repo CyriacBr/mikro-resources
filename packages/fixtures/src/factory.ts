@@ -126,18 +126,22 @@ export class FixturesFactory {
       case 'Date':
         entity[prop.name] = faker.date.recent();
         return;
-      case 'enum':
-        if (typeof fixtureMeta === 'object' && !!fixtureMeta.enum) {
-          entity[prop.name] = faker.random.arrayElement(
-            Utils.extractEnumValues(fixtureMeta.enum)
-          );
-          return;
-        }
-        this.logger.error(
-          `Can't generate enums without assistance. Use @Fixture({ enum: EnumType })`
-        );
-        break;
       default:
+        if (prop.enum) {
+          if (prop.items) {
+            entity[prop.name] = faker.random.arrayElement(prop.items);
+            return;
+          }
+          if (typeof fixtureMeta === 'object' && !!fixtureMeta.enum) {
+            entity[prop.name] = faker.random.arrayElement(
+              Utils.extractEnumValues(fixtureMeta.enum)
+            );
+            return;
+          }
+          this.logger.error(
+            `Can't generate enums without assistance. Use @Fixture({ enum: EnumType })`
+          );
+        }
         break;
     }
     this.logger.error(`Can't generate a value for this scalar`, prop);
