@@ -97,7 +97,7 @@ export class FixturesFactory {
 
   _shouldIgnoreProperty(fixtureMeta: FixtureOptions, prop: EntityProperty) {
     if (prop.primary) return true;
-    if (prop.type === 'methpd') return true;
+    if (prop.type === 'method') return true;
     if (typeof fixtureMeta === 'object' && fixtureMeta.ignore) return true;
     return false;
   }
