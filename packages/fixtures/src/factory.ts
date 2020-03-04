@@ -114,12 +114,19 @@ export class FixturesFactory {
       default:
         if (prop.enum) {
           if (prop.items) {
-            entity[prop.name] = faker.random.arrayElement(prop.items);
+            entity[prop.name] = faker.random.arrayElement(
+              this._isIntegerEnum(prop)
+                ? [...Array(prop.items.length).keys()]
+                : prop.items
+            );
             return;
           }
           if (typeof fixtureMeta === 'object' && !!fixtureMeta.enum) {
+            const items = Utils.extractEnumValues(fixtureMeta.enum);
             entity[prop.name] = faker.random.arrayElement(
-              Utils.extractEnumValues(fixtureMeta.enum)
+              this._isIntegerEnum(prop)
+                ? [...Array(items.length).keys()]
+                : items
             );
             return;
           }
@@ -208,5 +215,9 @@ export class FixturesFactory {
       }
     }
     throw new Error('');
+  }
+
+  _isIntegerEnum(prop: EntityProperty) {
+    return ['tinyint', 'int'].some(type => prop.columnType.match(type));
   }
 }

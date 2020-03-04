@@ -14,9 +14,9 @@ import { Address } from './address.entity';
 import { Fixture } from '../../src/decorator';
 
 export enum Mood {
-  GOOD,
-  BAD,
-  NEUTRAL,
+  GOOD = 'good',
+  BAD = 'bad',
+  NEUTRAL = 'neutral',
 }
 
 @Entity()

@@ -15,9 +15,13 @@ import { FixturesFactory } from "@mikro-resources/fixtures";
 const factory = new FixturesFactory(orm);
 
 // Generate a fixture
-const author = factory.make(Author).one();
+let author = factory.make(Author).one();
 // Generate multiple fixtures
-const authors = factory.make(Author).many(10);
+let authors = factory.make(Author).many(10);
+
+// Generate and persist
+author = await factory.make(Author).oneAndPersist();
+authors = factory.make(Author).manyAndPersist(10);
 ```
 
 ### Customization

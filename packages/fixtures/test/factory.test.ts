@@ -24,6 +24,24 @@ describe(`Factory`, () => {
     expect(orm).toBeDefined();
   });
 
+  it(`make().one()`, () => {
+    const result = factory.make(Author);
+    expect(result.one).toBeInstanceOf(Function);
+
+    const author = result.one();
+    expect(author).toBeInstanceOf(Author);
+  });
+
+  it(`make().many()`, () => {
+    const result = factory.make(Author);
+    expect(result.many).toBeInstanceOf(Function);
+
+    const authors = result.many(3);
+    expect(authors).toBeInstanceOf(Array);
+    expect(authors.length).toBe(3);
+    expect(authors[0]).toBeInstanceOf(Author);
+  });
+
   describe(`scalar properties`, () => {
     let author: Author;
 
@@ -46,9 +64,11 @@ describe(`Factory`, () => {
     });
 
     it(`enum`, () => {
-      expect(['GOOD', 'BAD', 'NEUTRAL'].includes(author.mood.toString())).toBe(
-        true
-      );
+      expect(
+        ['GOOD', 'BAD', 'NEUTRAL'].includes(
+          author.mood.toString().toUpperCase()
+        )
+      ).toBe(true);
     });
   });
 
