@@ -1,9 +1,17 @@
 [![Actions Status](https://github.com/CyriacBr/mikro-resources/workflows/Node%20CI/badge.svg)](https://github.com/CyriacBr/mikro-resources/actions)
 
-# @mikro-resources/fixture
+# @mikro-resources/fixtures
 
 This package generates fixtures of your mikro-orm entities on the fly, using `faker.js`.  
-`@mikro-resources/fixture` will automatically handle all fields and relations of your entities, but you can provide custom values as well.
+`@mikro-resources/fixtures` will automatically handle all fields and relations of your entities, but you can provide custom values as well.
+
+## Installation
+
+```bash
+yarn add -D @mikro-resources/fixtures 
+# or
+npm i -D @mikro-resources/fixtures
+```
 
 ## Usage
 
