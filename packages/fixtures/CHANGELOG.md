@@ -1,9 +1,4 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# 1.1.0 (2020-03-04)
+# 1.0.0 (2020-03-04)
 
 
 ### Bug Fixes
@@ -20,3 +15,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **fixtures-factory:** added m:1 support ([742fe99](https://github.com/CyriacBr/mikro-resources/commit/742fe992de971ce3aa1f24c05846af19e97808de))
 * **fixtures-factory:** added scalar props support ([3077c4d](https://github.com/CyriacBr/mikro-resources/commit/3077c4d497c513575405b17fbf0a2a4639802eac))
 * **fixtures-factory:** support m:n relationships ([bdf6ced](https://github.com/CyriacBr/mikro-resources/commit/bdf6ced1d42eff8dcab82944e8a6c3e7d2ce5934))
+
+
+
