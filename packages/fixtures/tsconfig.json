@@ -3,7 +3,7 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "downlevelIteration": true,
-    "module": "commonjs",
+    "module": "esnext",
     "lib": ["dom", "esnext"],
     "importHelpers": true,
     "declaration": true,
