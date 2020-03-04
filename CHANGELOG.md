@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/CyriacBr/mikro-resources/compare/v1.2.0...v1.3.0) (2020-03-04)
+
+
+### Bug Fixes
+
+* **fixtures-factory:**  typo methpd -> method ([c5794e5](https://github.com/CyriacBr/mikro-resources/commit/c5794e50002988848b9b10565f08b13be126b6b0))
+
+
+### Features
+
+* **fixtures-factory:** added ignore() and with() ([ab9bc8f](https://github.com/CyriacBr/mikro-resources/commit/ab9bc8f7ea386667b268ec17eee9af9b346a9680))
+
+
+
+
+
 # 1.2.0 (2020-03-04)
 
 
