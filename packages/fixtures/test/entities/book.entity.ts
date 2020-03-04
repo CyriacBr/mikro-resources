@@ -5,10 +5,13 @@ import {
   ManyToOne,
   Enum,
   Entity,
+  ManyToMany,
+  Collection,
 } from 'mikro-orm';
 import { Author } from './author.entity';
 import { BaseEntity } from './base.entity';
 import { Fixture } from '../../src/decorator';
+import { BookTag } from './book-tag.entity';
 
 export enum BookType {
   'drama',
@@ -30,4 +33,11 @@ export class Book extends BaseEntity {
 
   @ManyToOne()
   author!: Author;
+
+  @ManyToMany(
+    () => BookTag,
+    tag => tag.books,
+    { owner: true }
+  )
+  tags: Collection<BookTag> = new Collection<BookTag>(this);
 }

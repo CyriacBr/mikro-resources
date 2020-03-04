@@ -76,6 +76,9 @@ export class FixturesFactory {
       case '1:1':
         this._makeOneToOneProperty(entity, fixtureMeta, prop, entityMeta);
         return;
+      case 'm:n':
+        this._makeManyToManyProperty(entity, fixtureMeta, prop, entityMeta);
+        return;
       default:
         break;
     }
@@ -159,6 +162,27 @@ export class FixturesFactory {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:m');
     entity[prop.name] = this.make(prop.type, [refSideProperty]).one();
+  }
+
+  _makeManyToManyProperty(
+    entity: any,
+    fixtureMeta: FixtureOptions,
+    prop: EntityProperty,
+    entityMeta: EntityMetadata
+  ) {
+    const refSideProperty =
+      prop.mappedBy || this._findMappedBy(entityMeta, prop, 'm:n');
+    const amount =
+      typeof fixtureMeta === 'object'
+        ? faker.random.number({
+            min: fixtureMeta.min || 1,
+            max: fixtureMeta.max || 5,
+          })
+        : faker.random.number({ min: 1, max: 5 });
+    const elements = [...Array(amount).keys()].map(() =>
+      this.make(prop.type, [refSideProperty]).one()
+    );
+    (entity[prop.name] as Collection<any>).add(...elements);
   }
 
   _makeOneToOneProperty(

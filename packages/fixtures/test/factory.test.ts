@@ -73,5 +73,10 @@ describe(`Factory`, () => {
 
       expect(book.author).toBeInstanceOf(Author);
     });
+
+    it(`m:n`, () => {
+      const book = factory.make(Book).one();
+      expect(book.tags).toBeInstanceOf(Collection);
+    });
   });
 });

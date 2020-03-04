@@ -31,6 +31,17 @@
         ],
         "type": "Author",
         "nullable": false
+      },
+      "tags": {
+        "name": "tags",
+        "reference": "m:n",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "owner": true,
+        "type": "BookTag",
+        "fixedOrder": false
       }
     },
     "hooks": {},
@@ -45,5 +56,5 @@
     "collection": "book"
   },
   "origin": "./test/entities/book.entity.ts",
-  "hash": "79a1453bfc2c104d1defe439213e731d"
+  "hash": "de6503d619c027c7e7d374f039688da9"
 }
