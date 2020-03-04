@@ -9,24 +9,29 @@ import {
 import { FixtureMetadata, FixtureOptions } from './decorator';
 import * as faker from 'faker';
 import { Logger } from './logger';
+import { DeepPartialEntity } from 'mikro-orm/dist/typings';
 
 export class FixturesFactory {
   logger = new Logger();
   constructor(private readonly orm: MikroORM) {}
 
-  make<Entity = object>(
-    entityName: EntityName<Entity>,
-    propsToIgnore: string[] = []
-  ) {
+  make<Entity = object>(entityName: EntityName<Entity>) {
     const meta = this.orm.getMetadata();
     const name = Utils.className(entityName);
     const entityMeta = meta.get(name);
+    let propsToIgnore: string[] = [];
+    let userInput: DeepPartialEntity<Entity> = {};
+
     const result = {
-      one: () => this._make(entityMeta, entityName, propsToIgnore) as Entity,
+      one: () => {
+        const entity = this._make(entityMeta, entityName, propsToIgnore) as any;
+        for (const [key, value] of Object.entries(userInput)) {
+          entity[key] = value;
+        }
+        return entity as Entity;
+      },
       many: (x: number) => {
-        return [...Array(x).keys()].map(() =>
-          this._make(entityMeta, entityName, propsToIgnore)
-        );
+        return [...Array(x).keys()].map(() => result.one());
       },
       oneAndPersit: async () => {
         const entity = result.one();
@@ -37,6 +42,17 @@ export class FixturesFactory {
         const entities = result.many(x);
         await this.orm.em.persistAndFlush(entities);
         return entities;
+      },
+      with: (input: DeepPartialEntity<Entity>) => {
+        userInput = input;
+        for (const key of Object.keys(input)) {
+          propsToIgnore.push(key);
+        }
+        return result;
+      },
+      ignore: (...props: (keyof Entity)[]) => {
+        propsToIgnore = propsToIgnore.concat(props as string[]);
+        return result;
       },
     };
     return result;
@@ -165,7 +181,9 @@ export class FixturesFactory {
           })
         : faker.random.number({ min: 1, max: 5 });
     const elements = [...Array(amount).keys()].map(() =>
-      this.make(prop.type, [refSideProperty]).one()
+      this.make(prop.type)
+        .ignore(refSideProperty as never)
+        .one()
     );
     (entity[prop.name] as Collection<any>).add(...elements);
   }
@@ -178,7 +196,9 @@ export class FixturesFactory {
   ) {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:m');
-    entity[prop.name] = this.make(prop.type, [refSideProperty]).one();
+    entity[prop.name] = this.make(prop.type)
+      .ignore(refSideProperty as never)
+      .one();
   }
 
   _makeManyToManyProperty(
@@ -197,7 +217,9 @@ export class FixturesFactory {
           })
         : faker.random.number({ min: 1, max: 5 });
     const elements = [...Array(amount).keys()].map(() =>
-      this.make(prop.type, [refSideProperty]).one()
+      this.make(prop.type)
+        .ignore(refSideProperty as never)
+        .one()
     );
     (entity[prop.name] as Collection<any>).add(...elements);
   }
@@ -210,7 +232,9 @@ export class FixturesFactory {
   ) {
     const refSideProperty =
       prop.mappedBy || this._findMappedBy(entityMeta, prop, '1:1');
-    entity[prop.name] = this.make(prop.type, [refSideProperty]).one();
+    entity[prop.name] = this.make(prop.type)
+      .ignore(refSideProperty as never)
+      .one();
   }
 
   _findMappedBy(

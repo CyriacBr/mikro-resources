@@ -1,7 +1,7 @@
 import { MikroORM, FileCacheAdapter, wrap, Utils, Collection } from 'mikro-orm';
 import ormConfig from './mikro-orm.config';
 import { join } from 'path';
-import { Author } from './entities/author.entity';
+import { Author, Mood } from './entities/author.entity';
 import { FixturesFactory } from '../src/factory';
 import { WithBadEnum } from './entities/with-bad-enum.entity';
 import { Address } from './entities/address.entity';
@@ -62,6 +62,38 @@ describe(`Factory`, () => {
     expect(authors.length).toBe(3);
     expect(authors[0]).toBeInstanceOf(Author);
     expect(await orm.em.getRepository(Author).count()).toBe(currCount + 3);
+  });
+
+  it(`make().ignore()`, () => {
+    const author = factory
+      .make(Author)
+      .ignore('address', 'age')
+      .one();
+
+    expect(author).toBeInstanceOf(Author);
+    expect(author.address).toBeUndefined();
+    expect(author.age).toBeUndefined();
+  });
+
+  it(`make().with()`, () => {
+    const author = factory
+      .make(Author)
+      .with({
+        age: 30,
+        mood: Mood.GOOD,
+        address: factory
+          .make(Address)
+          .with({
+            city: 'ReactCity',
+          })
+          .one(),
+      })
+      .one();
+
+    expect(author).toBeInstanceOf(Author);
+    expect(author.age).toBe(30);
+    expect(author.mood).toBe(Mood.GOOD);
+    expect(author.address.city).toBe('ReactCity');
   });
 
   describe(`scalar properties`, () => {

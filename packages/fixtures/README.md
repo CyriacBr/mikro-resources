@@ -3,7 +3,8 @@
 # @mikro-resources/fixtures
 
 This package generates fixtures of your mikro-orm entities on the fly, using `faker.js`.  
-`@mikro-resources/fixtures` will automatically handle all fields and relations of your entities, but you can provide custom values as well.
+`@mikro-resources/fixtures` will automatically handle all fields and relations of your entities, but you can provide custom values as well.  
+The API is fully typed.
 
 ## Installation
 
@@ -18,7 +19,7 @@ npm i -D @mikro-resources/fixtures
 ### General
 
 ```ts
-import { FixturesFactory } from "@mikro-resources/fixtures";
+import { FixturesFactory } from '@mikro-resources/fixtures';
 
 const factory = new FixturesFactory(orm);
 
@@ -29,7 +30,22 @@ let authors = factory.make(Author).many(10);
 
 // Generate and persist
 author = await factory.make(Author).oneAndPersist();
-authors = factory.make(Author).manyAndPersist(10);
+authors = await factory.make(Author).manyAndPersist(10);
+
+// Ignore some properties at runtime
+const partialAuthor = factory
+  .make(Author)
+  .ignore('address', 'age')
+  .one(); // address and age are undefined
+
+// Override properties at runtime
+const agedAuthor = factory
+  .make(Author)
+  .with({
+    age: 70,
+    address: specialAddr, // any actual address entity object
+  })
+  .one();
 ```
 
 ### Customization
