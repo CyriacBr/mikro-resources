@@ -28,6 +28,16 @@ export class FixturesFactory {
           this._make(entityMeta, entityName, propsToIgnore)
         );
       },
+      oneAndPersit: async () => {
+        const entity = result.one();
+        await this.orm.em.persistAndFlush(entity);
+        return entity;
+      },
+      manyAndPersist: async (x: number) => {
+        const entities = result.many(x);
+        await this.orm.em.persistAndFlush(entities);
+        return entities;
+      },
     };
     return result;
   }

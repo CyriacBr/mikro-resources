@@ -42,6 +42,28 @@ describe(`Factory`, () => {
     expect(authors[0]).toBeInstanceOf(Author);
   });
 
+  it(`make().oneAndPersist()`, async () => {
+    const result = factory.make(Author);
+    expect(result.oneAndPersit).toBeInstanceOf(Function);
+
+    const currCount = await orm.em.getRepository(Author).count();
+    const author = await result.oneAndPersit();
+    expect(author).toBeInstanceOf(Author);
+    expect(await orm.em.getRepository(Author).count()).toBe(currCount + 1);
+  });
+
+  it(`make().manyAndPersist()`, async () => {
+    const result = factory.make(Author);
+    expect(result.manyAndPersist).toBeInstanceOf(Function);
+
+    const currCount = await orm.em.getRepository(Author).count();
+    const authors = await result.manyAndPersist(3);
+    expect(authors).toBeInstanceOf(Array);
+    expect(authors.length).toBe(3);
+    expect(authors[0]).toBeInstanceOf(Author);
+    expect(await orm.em.getRepository(Author).count()).toBe(currCount + 3);
+  });
+
   describe(`scalar properties`, () => {
     let author: Author;
 
