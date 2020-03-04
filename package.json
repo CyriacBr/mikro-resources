@@ -10,7 +10,6 @@
     "lint": "eslint . --ext ts"
   },
   "devDependencies": {
-    "lerna": "^3.20.2",
     "@commitlint/cli": "^8.3.4",
     "@commitlint/config-conventional": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
@@ -19,11 +18,14 @@
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jest": "^23.6.0",
-    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-jest-formatting": "^1.2.0",
+    "eslint-plugin-prettier": "^3.1.2",
     "husky": "^4.2.0",
+    "lerna": "^3.20.2",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "semantic-release": "^17.0.4",
+    "semantic-release-monorepo": "^7.0.0",
     "standard-version": "7.1.0"
   },
   "husky": {
@@ -56,7 +58,9 @@
       "plugin:prettier/recommended",
       "plugin:jest-formatting/recommended"
     ],
-    "ignorePatterns": ["node_modules/"],
+    "ignorePatterns": [
+      "node_modules/"
+    ],
     "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly"
