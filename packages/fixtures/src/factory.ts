@@ -33,7 +33,7 @@ export class FixturesFactory {
       many: (x: number) => {
         return [...Array(x).keys()].map(() => result.one());
       },
-      oneAndPersit: async () => {
+      oneAndPersist: async () => {
         const entity = result.one();
         await this.orm.em.persistAndFlush(entity);
         return entity;

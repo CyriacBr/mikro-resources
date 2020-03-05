@@ -44,10 +44,10 @@ describe(`Factory`, () => {
 
   it(`make().oneAndPersist()`, async () => {
     const result = factory.make(Author);
-    expect(result.oneAndPersit).toBeInstanceOf(Function);
+    expect(result.oneAndPersist).toBeInstanceOf(Function);
 
     const currCount = await orm.em.getRepository(Author).count();
-    const author = await result.oneAndPersit();
+    const author = await result.oneAndPersist();
     expect(author).toBeInstanceOf(Author);
     expect(await orm.em.getRepository(Author).count()).toBe(currCount + 1);
   });
