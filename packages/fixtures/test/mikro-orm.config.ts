@@ -7,12 +7,12 @@ import { BookTag } from './entities/book-tag.entity';
 
 export default {
   entities: [BaseEntity, Author, Book, Address, WithBadEnum, BookTag],
-  // dbName: 'test.db',
-  // type: 'sqlite',
-  dbName: 'mikro-resources-fixtures',
-  type: 'mysql',
-  user: 'root',
-  password: 'root',
+  dbName: 'test.db',
+  type: 'sqlite',
+  // dbName: 'mikro-resources-fixtures',
+  // type: 'mysql',
+  // user: 'root',
+  // password: 'root',
   debug: true,
   cache: {
     enabled: true,
