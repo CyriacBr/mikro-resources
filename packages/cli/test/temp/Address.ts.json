@@ -1,0 +1,38 @@
+{
+  "data": {
+    "className": "Address",
+    "properties": {
+      "city": {
+        "name": "city",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      "author": {
+        "name": "author",
+        "reference": "1:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "type": "Author",
+        "nullable": false,
+        "owner": true,
+        "unique": true
+      }
+    },
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/address.entity.ts",
+    "name": "Address",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "address"
+  },
+  "origin": "./test/entities/address.entity.ts",
+  "hash": "123f060904c143bab89590fba1676268"
+}

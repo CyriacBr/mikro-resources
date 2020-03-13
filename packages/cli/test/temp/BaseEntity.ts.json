@@ -1,0 +1,41 @@
+{
+  "data": {
+    "className": "BaseEntity",
+    "properties": {
+      "id": {
+        "name": "id",
+        "reference": "scalar",
+        "primary": true,
+        "type": "number"
+      },
+      "createdAt": {
+        "name": "createdAt",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "Date"
+      },
+      "updatedAt": {
+        "name": "updatedAt",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "Date"
+      }
+    },
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/base.entity.ts",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "useCache": true,
+    "primaryKey": "id",
+    "primaryKeys": [
+      "id"
+    ],
+    "compositePK": false
+  },
+  "origin": "./test/entities/base.entity.ts",
+  "hash": "1cbf31e630344aeeffeb15739faebaef"
+}

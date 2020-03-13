@@ -1,0 +1,60 @@
+{
+  "data": {
+    "className": "Book",
+    "properties": {
+      "name": {
+        "name": "name",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      "onSale": {
+        "name": "onSale",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "boolean"
+      },
+      "type": {
+        "name": "type",
+        "reference": "scalar",
+        "enum": true,
+        "type": "BookType"
+      },
+      "author": {
+        "name": "author",
+        "reference": "m:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "type": "Author",
+        "nullable": false
+      },
+      "tags": {
+        "name": "tags",
+        "reference": "m:n",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "owner": true,
+        "type": "BookTag",
+        "fixedOrder": false
+      }
+    },
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/book.entity.ts",
+    "name": "Book",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "book"
+  },
+  "origin": "./test/entities/book.entity.ts",
+  "hash": "db24a5fe588f8300f94cb29ac0437f45"
+}
