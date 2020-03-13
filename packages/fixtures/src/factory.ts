@@ -11,6 +11,15 @@ import * as faker from 'faker';
 import { Logger } from './logger';
 import { DeepPartialEntity } from 'mikro-orm/dist/typings';
 
+export interface FactoryResult<T> {
+  one: () => T;
+  many: (x: number) => T[];
+  oneAndPersist: () => Promise<T>;
+  manyAndPersist: (x: number) => Promise<T[]>;
+  with: (input: DeepPartialEntity<T>) => FactoryResult<T>;
+  ignore: (...props: (keyof T)[]) => FactoryResult<T>;
+}
+
 export class FixturesFactory {
   logger = new Logger();
   constructor(private readonly orm: MikroORM) {}
@@ -22,7 +31,7 @@ export class FixturesFactory {
     let propsToIgnore: string[] = [];
     let userInput: DeepPartialEntity<Entity> = {};
 
-    const result = {
+    const result: FactoryResult<Entity> = {
       one: () => {
         const entity = this._make(entityMeta, entityName, propsToIgnore) as any;
         for (const [key, value] of Object.entries(userInput)) {
