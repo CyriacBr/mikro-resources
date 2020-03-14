@@ -1,6 +1,6 @@
 import { MikroORM } from 'mikro-orm';
 import ormConfig from './mikro-orm.config';
-import { TypesGenerator } from '../src/typesGenerator';
+import { TypingsGenerator } from '../src/typingsGenerator';
 
 describe(`Playground`, () => {
   let orm: MikroORM;
@@ -10,7 +10,7 @@ describe(`Playground`, () => {
     await orm.getSchemaGenerator().dropSchema();
     await orm.getSchemaGenerator().createSchema();
 
-    const generator = new TypesGenerator(orm);
+    const generator = new TypingsGenerator(orm);
     const result = generator._getEntityPathMappings('Author');
     console.log('result :', result);
   });

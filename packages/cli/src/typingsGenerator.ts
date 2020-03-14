@@ -11,7 +11,7 @@ export interface PathMapping {
   type: string;
 }
 
-export class TypesGenerator {
+export class TypingsGenerator {
   constructor(private readonly orm: MikroORM) {}
 
   generateQueryMap<Entity = object>(entityName: EntityName<Entity>) {

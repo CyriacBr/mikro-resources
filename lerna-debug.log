@@ -1,0 +1,82 @@
+0 silly argv { _: [ 'version' ],
+0 silly argv   'create-release': 'github',
+0 silly argv   createRelease: 'github',
+0 silly argv   lernaVersion: '3.20.2',
+0 silly argv   '$0': 'lerna' }
+1 notice cli v3.20.2
+2 verbose rootPath /mnt/0CC5166B0CC5166B/Work/mikro-resources
+3 info current version 1.2.0
+4 silly isAnythingCommitted
+5 verbose isAnythingCommitted 1
+6 silly currentBranch
+7 verbose currentBranch develop
+8 silly remoteBranchExists
+9 silly isBehindUpstream
+10 silly isBehindUpstream develop is behind origin/develop by 0 commit(s) and ahead by 1
+11 silly hasTags
+12 verbose hasTags true
+13 silly git-describe.sync "v1.2.0-3-gab9bc8f" => {"lastTagName":"v1.2.0","lastVersion":"v1.2.0","refCount":"3","sha":"ab9bc8f","isDirty":false}
+14 info Looking for changed packages since v1.2.0
+15 silly checking diff packages/fixtures
+16 silly found diff in packages/fixtures/README.md
+16 silly found diff in packages/fixtures/src/factory.ts
+16 silly found diff in packages/fixtures/test/factory.test.ts
+17 verbose filtered diff [ 'packages/fixtures/README.md',
+17 verbose filtered diff   'packages/fixtures/src/factory.ts',
+17 verbose filtered diff   'packages/fixtures/test/factory.test.ts' ]
+18 verbose updated @mikro-resources/fixtures
+19 verbose git-describe undefined => "v1.2.0-3-gab9bc8f"
+20 silly git-describe parsed => {"lastTagName":"v1.2.0","lastVersion":"v1.2.0","refCount":"3","sha":"ab9bc8f","isDirty":false}
+21 silly fixed for @mikro-resources/fixtures at /mnt/0CC5166B0CC5166B/Work/mikro-resources/packages/fixtures
+22 verbose getChangelogConfig using preset "conventional-changelog-angular"
+23 silly npa Result {
+23 silly npa   type: 'tag',
+23 silly npa   registry: true,
+23 silly npa   where: undefined,
+23 silly npa   raw: 'conventional-changelog-angular',
+23 silly npa   name: 'conventional-changelog-angular',
+23 silly npa   escapedName: 'conventional-changelog-angular',
+23 silly npa   scope: undefined,
+23 silly npa   rawSpec: '',
+23 silly npa   saveSpec: null,
+23 silly npa   fetchSpec: 'latest',
+23 silly npa   gitRange: undefined,
+23 silly npa   gitCommittish: undefined,
+23 silly npa   hosted: undefined }
+24 verbose getChangelogConfig Attempting to resolve preset "conventional-changelog-angular"
+25 info getChangelogConfig Successfully resolved preset "conventional-changelog-angular"
+26 verbose fixed increment 1.2.0 by minor
+27 info auto-confirmed
+28 info execute Creating releases...
+29 silly lifecycle No script for "preversion" in "root", continuing
+30 silly lifecycle No script for "preversion" in "@mikro-resources/fixtures", continuing
+31 silly lifecycle No script for "version" in "@mikro-resources/fixtures", continuing
+32 silly fixed for @mikro-resources/fixtures at /mnt/0CC5166B0CC5166B/Work/mikro-resources/packages/fixtures
+33 silly fixed writing new entry: "# [1.3.0](https://github.com/CyriacBr/mikro-resources/compare/v1.2.0...v1.3.0) (2020-03-04)\n\n\n### Bug Fixes\n\n* **fixtures-factory:**  typo methpd -> method ([c5794e5](https://github.com/CyriacBr/mikro-resources/commit/c5794e50002988848b9b10565f08b13be126b6b0))\n\n\n### Features\n\n* **fixtures-factory:** added ignore() and with() ([ab9bc8f](https://github.com/CyriacBr/mikro-resources/commit/ab9bc8f7ea386667b268ec17eee9af9b346a9680))\n\n\n\n"
+34 verbose fixed wrote /mnt/0CC5166B0CC5166B/Work/mikro-resources/packages/fixtures/CHANGELOG.md
+35 silly root for root at /mnt/0CC5166B0CC5166B/Work/mikro-resources
+36 silly root writing new entry: "# [1.3.0](https://github.com/CyriacBr/mikro-resources/compare/v1.2.0...v1.3.0) (2020-03-04)\n\n\n### Bug Fixes\n\n* **fixtures-factory:**  typo methpd -> method ([c5794e5](https://github.com/CyriacBr/mikro-resources/commit/c5794e50002988848b9b10565f08b13be126b6b0))\n\n\n### Features\n\n* **fixtures-factory:** added ignore() and with() ([ab9bc8f](https://github.com/CyriacBr/mikro-resources/commit/ab9bc8f7ea386667b268ec17eee9af9b346a9680))\n\n\n\n"
+37 verbose root wrote /mnt/0CC5166B0CC5166B/Work/mikro-resources/CHANGELOG.md
+38 silly lifecycle No script for "version" in "root", continuing
+39 silly gitAdd [ '/mnt/0CC5166B0CC5166B/Work/mikro-resources/packages/fixtures/package.json',
+39 silly gitAdd   '/mnt/0CC5166B0CC5166B/Work/mikro-resources/packages/fixtures/CHANGELOG.md',
+39 silly gitAdd   '/mnt/0CC5166B0CC5166B/Work/mikro-resources/CHANGELOG.md',
+39 silly gitAdd   '/mnt/0CC5166B0CC5166B/Work/mikro-resources/lerna.json' ]
+40 silly gitCommit chore(release): publish
+41 verbose git [ 'commit', '-m', 'chore(release): publish' ]
+42 silly gitTag v1.3.0
+43 verbose git [ 'tag', 'v1.3.0', '-m', 'v1.3.0' ]
+44 silly lifecycle No script for "postversion" in "@mikro-resources/fixtures", continuing
+45 silly lifecycle No script for "postversion" in "root", continuing
+46 info git Pushing tags...
+47 silly gitPush origin develop
+48 silly parseGitRepo
+49 verbose git [ 'config', '--get', 'remote.origin.url' ]
+50 silly createGitHubClient
+51 error Error: A GH_TOKEN environment variable is required.
+51 error     at createGitHubClient (/mnt/0CC5166B0CC5166B/Work/mikro-resources/node_modules/@lerna/github-client/lib/github-client.js:17:11)
+51 error     at createClient (/mnt/0CC5166B0CC5166B/Work/mikro-resources/node_modules/@lerna/version/lib/create-release.js:16:14)
+51 error     at createRelease (/mnt/0CC5166B0CC5166B/Work/mikro-resources/node_modules/@lerna/version/lib/create-release.js:25:18)
+51 error     at tasks.push (/mnt/0CC5166B0CC5166B/Work/mikro-resources/node_modules/@lerna/version/index.js:272:9)
+51 error     at pReduce (/mnt/0CC5166B0CC5166B/Work/mikro-resources/node_modules/p-waterfall/index.js:4:73)
+51 error     at Promise.all.then.value (/mnt/0CC5166B0CC5166B/Work/mikro-resources/node_modules/p-reduce/index.js:16:10)
