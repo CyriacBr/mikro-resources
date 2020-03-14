@@ -1,6 +1,8 @@
-import { MikroORM } from 'mikro-orm';
+import { MikroORM, FilterQuery } from 'mikro-orm';
 import ormConfig from './mikro-orm.config';
 import { TypingsGenerator } from '../src/typingsGenerator';
+import { Author } from './entities/author.entity';
+import { Query, OperatorMap } from 'mikro-orm/dist/typings';
 
 describe(`Playground`, () => {
   let orm: MikroORM;
@@ -10,9 +12,14 @@ describe(`Playground`, () => {
     await orm.getSchemaGenerator().dropSchema();
     await orm.getSchemaGenerator().createSchema();
 
-    const generator = new TypingsGenerator(orm);
-    const result = generator._getEntityPathMappings('Author');
-    console.log('result :', result);
+    const generator = new TypingsGenerator(orm.getMetadata(), orm.config);
+    await generator.generateAndWrite();
+    // const query = generator.generateEntityQueryType(Author);
+    // console.log('query :', query);
+
+    // orm.em.getRepository(Author).find({
+    //   $and
+    // });
   });
 
   afterAll(() => orm.close());
