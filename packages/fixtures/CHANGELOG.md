@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/CyriacBr/mikro-resources/compare/v1.3.1...v1.4.0) (2020-03-14)
+
+
+### Bug Fixes
+
+* **fixtures:** fixed make() typing ([fed0f13](https://github.com/CyriacBr/mikro-resources/commit/fed0f132931eadf4267ce60b4dbbfdd32ebfe1af))
+
+
+### Features
+
+* **cli:** added typesGenerator ([c5a9c73](https://github.com/CyriacBr/mikro-resources/commit/c5a9c730c543ef2805c595e9cf3058f1bc4a95bd))
+
+
+
+
+
 ## [1.3.1](https://github.com/CyriacBr/mikro-resources/compare/v1.3.0...v1.3.1) (2020-03-05)
 
 

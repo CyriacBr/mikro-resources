@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "1.4.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -16,7 +16,6 @@
     "lint": "cyriacbr-tsdx lint",
     "prepare": "cyriacbr-tsdx build"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "cyriacbr-tsdx lint"
