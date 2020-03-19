@@ -1,11 +1,31 @@
-import { Collection } from 'mikro-orm';
+import { Collection, Primary } from 'mikro-orm';
 import { Author } from '../entities/author.entity';
 import { Mood } from '../entities/author.entity';
 import { Book } from '../entities/book.entity';
 import { BookType } from '../entities/book.entity';
 import { Address } from '../entities/address.entity';
 import { BookTag } from '../entities/book-tag.entity';
-export interface AuthorPathMap {
+type OperatorMap<T> = {
+  $and?: T[];
+  $or?: T[];
+  $eq?: T;
+  $ne?: T;
+  $in?: T[];
+  $nin?: T[];
+  $not?: T;
+  $gt?: T;
+  $gte?: T;
+  $lt?: T;
+  $lte?: T;
+  $like?: string;
+  $re?: string;
+};
+type WithOperatorMap<T> = {
+  [K in keyof T]: T[K] extends Primary<T>
+    ? WithOperatorMap<T[K]> | Primary<T>
+    : OperatorMap<T[K]> | T[K];
+};
+interface AuthorPathMap {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -30,37 +50,19 @@ export interface AuthorPathMap {
   'address.updatedAt': Date;
   'address.city': string;
 }
-type AuthorPopulateQuery = keyof AuthorPathMap;
-type BaseAuthorQuery = {
-  id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  name: string;
-  age: number;
-  mood: Mood;
-  books: {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    onSale: boolean;
-    type: BookType;
-    tags: {
-      id: number;
-      createdAt: Date;
-      updatedAt: Date;
-      label: string;
-    };
-  };
-  address: {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    city: string;
-  };
-};
-type AuthorQuery = BaseAuthorQuery | OperatorMap<BaseAuthorQuery>;
-export interface BookPathMap {
+export type AuthorPopulateQuery = keyof AuthorPathMap;
+type BaseAuthorQuery = WithOperatorMap<{
+  id?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  name?: string;
+  age?: number;
+  mood?: Mood;
+  books?: BaseBookQuery;
+  address?: BaseAddressQuery;
+}>;
+export type AuthorQuery = BaseAuthorQuery & OperatorMap<BaseAuthorQuery>;
+interface BookPathMap {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -85,37 +87,19 @@ export interface BookPathMap {
   'tags.updatedAt': Date;
   'tags.label': string;
 }
-type BookPopulateQuery = keyof BookPathMap;
-type BaseBookQuery = {
-  id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  name: string;
-  onSale: boolean;
-  type: BookType;
-  author: {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    age: number;
-    mood: Mood;
-    address: {
-      id: number;
-      createdAt: Date;
-      updatedAt: Date;
-      city: string;
-    };
-  };
-  tags: {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    label: string;
-  };
-};
-type BookQuery = BaseBookQuery | OperatorMap<BaseBookQuery>;
-export interface AddressPathMap {
+export type BookPopulateQuery = keyof BookPathMap;
+type BaseBookQuery = WithOperatorMap<{
+  id?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  name?: string;
+  onSale?: boolean;
+  type?: BookType;
+  author?: BaseAuthorQuery;
+  tags?: BaseBookTagQuery;
+}>;
+export type BookQuery = BaseBookQuery & OperatorMap<BaseBookQuery>;
+interface AddressPathMap {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -140,37 +124,16 @@ export interface AddressPathMap {
   'author.books.tags.updatedAt': Date;
   'author.books.tags.label': string;
 }
-type AddressPopulateQuery = keyof AddressPathMap;
-type BaseAddressQuery = {
-  id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  city: string;
-  author: {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    age: number;
-    mood: Mood;
-    books: {
-      id: number;
-      createdAt: Date;
-      updatedAt: Date;
-      name: string;
-      onSale: boolean;
-      type: BookType;
-      tags: {
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        label: string;
-      };
-    };
-  };
-};
-type AddressQuery = BaseAddressQuery | OperatorMap<BaseAddressQuery>;
-export interface BookTagPathMap {
+export type AddressPopulateQuery = keyof AddressPathMap;
+type BaseAddressQuery = WithOperatorMap<{
+  id?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  city?: string;
+  author?: BaseAuthorQuery;
+}>;
+export type AddressQuery = BaseAddressQuery & OperatorMap<BaseAddressQuery>;
+interface BookTagPathMap {
   id: number;
   createdAt: Date;
   updatedAt: Date;
@@ -195,53 +158,16 @@ export interface BookTagPathMap {
   'books.author.address.updatedAt': Date;
   'books.author.address.city': string;
 }
-type BookTagPopulateQuery = keyof BookTagPathMap;
-type BaseBookTagQuery = {
-  id: number;
-  createdAt: Date;
-  updatedAt: Date;
-  label: string;
-  books: {
-    id: number;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    onSale: boolean;
-    type: BookType;
-    author: {
-      id: number;
-      createdAt: Date;
-      updatedAt: Date;
-      name: string;
-      age: number;
-      mood: Mood;
-      address: {
-        id: number;
-        createdAt: Date;
-        updatedAt: Date;
-        city: string;
-      };
-    };
-  };
-};
-type BookTagQuery = BaseBookTagQuery | OperatorMap<BaseBookTagQuery>;
-type OperatorMap<T> = {
-  $and?: T[];
-  $or?: T[];
-  $eq?: T;
-  $ne?: T;
-  $in?: T[];
-  $nin?: T[];
-  $not?: T;
-  $gt?: T;
-  $gte?: T;
-  $lt?: T;
-  $lte?: T;
-  $like?: string;
-  $re?: string;
-};
+export type BookTagPopulateQuery = keyof BookTagPathMap;
+type BaseBookTagQuery = WithOperatorMap<{
+  id?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  label?: string;
+  books?: BaseBookQuery;
+}>;
+export type BookTagQuery = BaseBookTagQuery & OperatorMap<BaseBookTagQuery>;
 declare module 'mikro-orm/dist/typings' {
-  type ModdedQuery<T> = QueryTypes<T>['_Query'];
   export interface QueryTypes<T extends AnyEntity<T>> {
     _PopulateQuery: T extends Author
       ? AuthorPopulateQuery

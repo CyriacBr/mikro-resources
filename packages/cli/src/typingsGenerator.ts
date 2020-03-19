@@ -15,6 +15,12 @@ import { promisify } from 'util';
 export interface PathMapping {
   name: string;
   type: string;
+  prop: EntityProperty;
+}
+
+export interface TypingsGeneratorOptions {
+  path?: string;
+  simplified?: boolean; // if no, books: BookQuery | Book | Primary
 }
 
 export class TypingsGenerator {
@@ -28,18 +34,41 @@ export class TypingsGenerator {
     const entityNames = Object.keys(this.metadata.getAll()).filter(
       v => v[0] === v[0].toUpperCase()
     );
-    const imports: string[] = [`import { Collection } from 'mikro-orm'`];
-    const interfaces: string[] = [];
+    const imports: string[] = [
+      `import { Collection, Primary } from 'mikro-orm'`,
+    ];
+    const types: string[] = [
+      `type OperatorMap<T> = {
+        $and?: T[];
+        $or?: T[];
+        $eq?: T;
+        $ne?: T;
+        $in?: T[];
+        $nin?: T[];
+        $not?: T;
+        $gt?: T;
+        $gte?: T;
+        $lt?: T;
+        $lte?: T;
+        $like?: string;
+        $re?: string;
+      };
+      type WithOperatorMap<T> = {
+        [K in keyof T]: T[K] extends Primary<T>
+          ? WithOperatorMap<T[K]> | Primary<T>
+          : OperatorMap<T[K]> | T[K];
+      };`,
+    ];
 
     for (const entityName of entityNames) {
       imports.push(this.generateEntityImport(entityName));
-      interfaces.push(this.generateEntityPathMapInterface(entityName));
-      interfaces.push(this.generateEntityQueryType(entityName));
+      types.push(this.generateEntityPathMapInterface(entityName));
+      types.push(this.generateEntityQueryType(entityName));
     }
 
     return this.print(`
       ${imports.join('\n')}
-      ${interfaces.join('\n')}
+      ${types.join('\n')}
       ${this.generateTypingsOverride(entityNames)}
     `);
   }
@@ -65,21 +94,6 @@ export class TypingsGenerator {
     let queryStatement = makeStatement('Query');
 
     return `
-    type OperatorMap<T> = {
-      $and?: T[];
-      $or?: T[];
-      $eq?: T;
-      $ne?: T;
-      $in?: T[];
-      $nin?: T[];
-      $not?: T;
-      $gt?: T;
-      $gte?: T;
-      $lt?: T;
-      $lte?: T;
-      $like?: string;
-      $re?: string;
-    };
     declare module 'mikro-orm/dist/typings' {
       export interface QueryTypes<T extends AnyEntity<T>> {
         _PopulateQuery: ${populateStatement};
@@ -98,10 +112,10 @@ export class TypingsGenerator {
   ) {
     const name = Utils.className(entityName);
     const pathMappings = this.getEntityPathMappings(entityName);
-    return `export interface ${name}PathMap {
+    return `interface ${name}PathMap {
       ${pathMappings.map(val => `'${val.name}': ${val.type};`).join('\n')}
     }
-    type ${name}PopulateQuery = keyof ${name}PathMap`;
+    export type ${name}PopulateQuery = keyof ${name}PathMap`;
   }
 
   generateEntityQueryType<Entity = object>(entityName: EntityName<Entity>) {
@@ -115,30 +129,36 @@ export class TypingsGenerator {
       childMaps: PathMapping[] = []
     ) => {
       if (!map.name.includes('.')) {
-        parent[map.name] = map.type;
+        parent[map.name] =
+          map.prop.reference === 'scalar' ? map.type : `Base${map.type}Query`;
         return;
       }
-      const parentProp = /(.*?)\..+/.exec(map.name)![1];
-      const childrenPaths = childMaps
-        .filter(p => p.name.startsWith(parentProp + '.'))
-        .map(v => ({
-          ...v,
-          name: v.name.replace(parentProp + '.', ''),
-        }));
-      parent[parentProp] = {};
-      for (const childMap of childrenPaths) {
-        walk(childMap, parent[parentProp], childrenPaths);
-      }
+      return;
+      // if (!map.name.includes('.')) {
+      //   parent[map.name] = map.type;
+      //   return;
+      // }
+      // const parentProp = /(.*?)\..+/.exec(map.name)![1];
+      // const childrenPaths = childMaps
+      //   .filter(p => p.name.startsWith(parentProp + '.'))
+      //   .map(v => ({
+      //     ...v,
+      //     name: v.name.replace(parentProp + '.', ''),
+      //   }));
+      // parent[parentProp] = {};
+      // for (const childMap of childrenPaths) {
+      //   walk(childMap, parent[parentProp], childrenPaths);
+      // }
     };
 
     for (const map of pathMappings) {
       walk(map, result, pathMappings);
     }
-    return `type Base${name}Query = ${JSON.stringify(result).replace(
-      /:\s*"(.*?)"/gi,
-      ': $1'
-    )};
-    type ${name}Query = Base${name}Query | OperatorMap<Base${name}Query>`;
+    const queryString = JSON.stringify(result)
+      .replace(/:\s*\{(.*?)\}/gi, '?: {$1}')
+      .replace(/:\s*"(.*?)"/gi, '?: $1');
+    return `type Base${name}Query = WithOperatorMap<${queryString}>;
+    export type ${name}Query = Base${name}Query & OperatorMap<Base${name}Query>`;
   }
 
   generateEntityImport<Entity = object>(entityName: EntityName<Entity>) {
@@ -172,18 +192,19 @@ export class TypingsGenerator {
     const paths = Object.values(entityMeta.properties).map(prop => {
       if (propsToIgnore.includes(prop.name)) return null;
       if (prop.reference === 'scalar') {
-        return { name: prop.name, type: prop.type } as PathMapping;
+        return { name: prop.name, type: prop.type, prop } as PathMapping;
       }
       let mappedBy = this.findMappedBy(prop, entityMeta);
 
       const nestedPaths = this.getEntityPathMappings(prop.type, [mappedBy]);
       return [
-        { name: prop.name, type: prop.type } as PathMapping,
+        { name: prop.name, type: prop.type, prop } as PathMapping,
         ...nestedPaths.filter(Boolean).map(
           v =>
             ({
               name: prop.name + '.' + v.name,
               type: v.type,
+              prop: v.prop,
             } as PathMapping)
         ),
       ];
