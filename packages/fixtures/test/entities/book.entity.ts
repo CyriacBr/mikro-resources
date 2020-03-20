@@ -10,8 +10,8 @@ import {
 } from 'mikro-orm';
 import { Author } from './author.entity';
 import { BaseEntity } from './base.entity';
-import { Fixture } from '../../src/decorator';
 import { BookTag } from './book-tag.entity';
+import { Fixture } from 'class-fixtures-factory';
 
 export enum BookType {
   'drama',

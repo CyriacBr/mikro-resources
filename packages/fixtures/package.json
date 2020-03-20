@@ -60,6 +60,7 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
+    "class-fixtures-factory": "^1.2.1",
     "faker": "^4.1.0"
   }
 }

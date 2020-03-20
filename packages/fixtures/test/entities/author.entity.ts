@@ -11,7 +11,7 @@ import {
 import { Book } from './book.entity';
 import { BaseEntity } from './base.entity';
 import { Address } from './address.entity';
-import { Fixture } from '../../src/decorator';
+import { Fixture } from 'class-fixtures-factory';
 
 export enum Mood {
   GOOD = 'good',

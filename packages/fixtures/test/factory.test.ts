@@ -1,21 +1,19 @@
-import { MikroORM, FileCacheAdapter, wrap, Utils, Collection } from 'mikro-orm';
+import { MikroORM, Collection } from 'mikro-orm';
 import ormConfig from './mikro-orm.config';
-import { join } from 'path';
 import { Author, Mood } from './entities/author.entity';
-import { FixturesFactory } from '../src/factory';
-import { WithBadEnum } from './entities/with-bad-enum.entity';
 import { Address } from './entities/address.entity';
 import { Book } from './entities/book.entity';
+import { FixtureFactory } from '../src/FixtureFactory';
 
 describe(`Factory`, () => {
   let orm: MikroORM;
-  let factory: FixturesFactory;
+  let factory: FixtureFactory;
 
   beforeAll(async () => {
     orm = await MikroORM.init(ormConfig);
     await orm.getSchemaGenerator().dropSchema();
     await orm.getSchemaGenerator().createSchema();
-    factory = new FixturesFactory(orm);
+    factory = new FixtureFactory(orm, { logging: true });
   });
 
   afterAll(() => orm.close());
