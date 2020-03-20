@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/CyriacBr/mikro-resources/compare/v1.4.1...v1.5.0) (2020-03-20)
+
+
+### Features
+
+* **fixture:** use class-fixtures-factory ([f35ee25](https://github.com/CyriacBr/mikro-resources/commit/f35ee25c65a9cd85cae051c4b5e71a048f9998bc))
+
+
+
+
+
 # [1.4.0](https://github.com/CyriacBr/mikro-resources/compare/v1.3.1...v1.4.0) (2020-03-14)
 
 
