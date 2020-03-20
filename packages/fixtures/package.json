@@ -33,7 +33,8 @@
   "scripts": {
     "start": "cyriacbr-tsdx watch",
     "build": "cyriacbr-tsdx build",
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "yarn build && pkg-ok"
   },
   "module": "dist/fixtures.esm.js",
   "devDependencies": {
