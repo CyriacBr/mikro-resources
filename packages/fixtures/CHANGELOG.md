@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/CyriacBr/mikro-resources/compare/v1.5.0...v1.6.0) (2020-03-24)
+
+
+### Features
+
+* **fixtures:** exposed register method ([35293d5](https://github.com/CyriacBr/mikro-resources/commit/35293d5cae20ee4ccfc948eec697eb032445f1ea))
+
+
+
+
+
 # [1.5.0](https://github.com/CyriacBr/mikro-resources/compare/v1.4.1...v1.5.0) (2020-03-20)
 
 
