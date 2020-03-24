@@ -4,6 +4,7 @@ import {
   FactoryResult as FR,
   DefaultMetadataStore,
   PropertyMetadata,
+  Class,
 } from 'class-fixtures-factory';
 import { MetadataStore } from './MetadataStore';
 import { MikroORM, EntityName, Utils, Collection } from 'mikro-orm';
@@ -29,6 +30,10 @@ export class FixtureFactory {
     this.factory.setAssigner(this.assigner.bind(this));
   }
 
+  register(classTypes: Class[]) {
+    this.factory.register(classTypes);
+  }
+
   private registerAllEntities() {
     const metadata = this.orm.getMetadata();
     const entityNames = Object.keys(metadata.getAll()).filter(
@@ -36,12 +41,13 @@ export class FixtureFactory {
     );
     for (const name of entityNames) {
       const classType = metadata.get(name).class;
-      this.factory.register([classType]);
+      this.register([classType]);
     }
   }
 
   private assigner(prop: PropertyMetadata, obj: any, value: any) {
-    if (Array.isArray(value)) {
+    // TODO: find a better way to detect Collections
+    if (Array.isArray(value) && obj[prop.name].add) {
       (obj[prop.name] as Collection<any>).add(...value);
     } else {
       obj[prop.name] = value;
