@@ -6,7 +6,7 @@ import {
   DefaultMetadataStore,
   FixtureFactory as FF,
 } from 'class-fixtures-factory';
-import { MikroORM, Utils } from 'mikro-orm';
+import { MikroORM, Utils, EntityMetadata } from 'mikro-orm';
 
 export class MetadataStore extends BaseMetadataStore {
   private defaultStore = new DefaultMetadataStore(true);
@@ -17,8 +17,13 @@ export class MetadataStore extends BaseMetadataStore {
 
   make(classType: Class): ClassMetadata {
     const name = Utils.className(classType.name);
-    const meta = this.orm.getMetadata().get(name);
     const defaultMeta = this.defaultStore.make(classType);
+    let meta: EntityMetadata;
+    try {
+      meta = this.orm.getMetadata().get(name);
+    } catch (error) {
+      return (this.store[name] = defaultMeta);
+    }
     const classMetadata = <ClassMetadata>{
       name,
       properties: Object.values(meta.properties)
