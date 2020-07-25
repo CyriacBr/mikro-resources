@@ -24,18 +24,17 @@
       }
     },
     "hooks": {},
+    "primaryKeys": [
+      "id"
+    ],
     "indexes": [],
     "uniques": [],
     "path": "./test/entities/base.entity.ts",
     "constructorParams": [],
     "toJsonParams": [],
     "useCache": true,
-    "primaryKey": "id",
-    "primaryKeys": [
-      "id"
-    ],
     "compositePK": false
   },
   "origin": "./test/entities/base.entity.ts",
-  "hash": "1f01a3404c475e9ac728c2ee444fd267"
+  "hash": "6e6cd34b538f6b54b5e26379144fd808"
 }

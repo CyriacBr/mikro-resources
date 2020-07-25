@@ -1,4 +1,4 @@
-import { MikroORM, FileCacheAdapter, wrap } from 'mikro-orm';
+import { MikroORM, FileCacheAdapter, wrap } from '@mikro-orm/core';
 import ormConfig from './mikro-orm.config';
 import { join } from 'path';
 import { Author } from './entities/author.entity';
@@ -7,7 +7,7 @@ describe(`Playground`, () => {
   let orm: MikroORM;
 
   beforeAll(async () => {
-    orm = await MikroORM.init(ormConfig);
+    orm = await MikroORM.init(ormConfig as any);
     await orm.getSchemaGenerator().dropSchema();
     await orm.getSchemaGenerator().createSchema();
 

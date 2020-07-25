@@ -1,13 +1,4 @@
-import {
-  IdEntity,
-  PrimaryKey,
-  Property,
-  OneToMany,
-  Collection,
-  Entity,
-  OneToOne,
-} from 'mikro-orm';
-import { Book } from './book.entity';
+import { Property, Entity, OneToOne } from '@mikro-orm/core';
 import { BaseEntity } from './base.entity';
 import { Author } from './author.entity';
 

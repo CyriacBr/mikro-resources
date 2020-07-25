@@ -7,8 +7,8 @@ import {
   Class,
 } from 'class-fixtures-factory';
 import { MetadataStore } from './MetadataStore';
-import { MikroORM, EntityName, Utils, Collection } from 'mikro-orm';
-import { DeepPartialEntity, EntityClass } from 'mikro-orm/dist/typings';
+import { MikroORM, EntityName, Utils, Collection } from '@mikro-orm/core';
+import { DeepPartialEntity, EntityClass } from '@mikro-orm/core/dist/typings';
 
 export interface FactoryResult<T> {
   one: () => T;

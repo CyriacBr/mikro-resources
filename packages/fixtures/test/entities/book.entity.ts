@@ -1,22 +1,20 @@
 import {
-  IdEntity,
-  PrimaryKey,
   Property,
   ManyToOne,
   Enum,
   Entity,
   ManyToMany,
   Collection,
-} from 'mikro-orm';
+} from '@mikro-orm/core';
 import { Author } from './author.entity';
 import { BaseEntity } from './base.entity';
 import { BookTag } from './book-tag.entity';
 import { Fixture } from 'class-fixtures-factory';
 
 export enum BookType {
-  'drama',
-  'action',
-  'sci-fi',
+  DRAMA = 'drama',
+  ACTION = 'action',
+  SCI_FI = 'sci-fi',
 }
 
 @Entity()

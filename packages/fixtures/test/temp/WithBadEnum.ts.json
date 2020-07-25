@@ -10,6 +10,7 @@
       }
     },
     "hooks": {},
+    "primaryKeys": [],
     "indexes": [],
     "uniques": [],
     "path": "./test/entities/with-bad-enum.entity.ts",
@@ -21,5 +22,5 @@
     "collection": "with_bad_enum"
   },
   "origin": "./test/entities/with-bad-enum.entity.ts",
-  "hash": "0060ee8c6e0f1efc38081218ce068afb"
+  "hash": "25d6f01757f1e8153c9926f8487c3e1e"
 }

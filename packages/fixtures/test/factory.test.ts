@@ -1,4 +1,4 @@
-import { MikroORM, Collection } from 'mikro-orm';
+import { MikroORM, Collection } from '@mikro-orm/core';
 import ormConfig from './mikro-orm.config';
 import { Author, Mood } from './entities/author.entity';
 import { Address } from './entities/address.entity';
@@ -10,7 +10,7 @@ describe(`Factory`, () => {
   let factory: FixtureFactory;
 
   beforeAll(async () => {
-    orm = await MikroORM.init(ormConfig);
+    orm = await MikroORM.init(ormConfig as any);
     await orm.getSchemaGenerator().dropSchema();
     await orm.getSchemaGenerator().createSchema();
     factory = new FixtureFactory(orm, { logging: true });

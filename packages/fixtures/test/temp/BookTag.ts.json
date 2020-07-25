@@ -16,11 +16,13 @@
           "persist",
           "merge"
         ],
+        "strategy": "select-in",
         "type": "Book",
         "fixedOrder": false
       }
     },
     "hooks": {},
+    "primaryKeys": [],
     "indexes": [],
     "uniques": [],
     "path": "./test/entities/book-tag.entity.ts",
@@ -32,5 +34,5 @@
     "collection": "book_tag"
   },
   "origin": "./test/entities/book-tag.entity.ts",
-  "hash": "868984c462674cccd5afc2c7aa892dd3"
+  "hash": "678a59649d7f64670eb0f8951b20a99c"
 }
