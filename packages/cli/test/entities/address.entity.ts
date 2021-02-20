@@ -6,7 +6,7 @@ import {
   Collection,
   Entity,
   OneToOne,
-} from 'mikro-orm';
+} from '@mikro-orm/core';
 import { Book } from './book.entity';
 import { BaseEntity } from './base.entity';
 import { Author } from './author.entity';

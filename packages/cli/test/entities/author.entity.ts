@@ -7,7 +7,7 @@ import {
   Entity,
   OneToOne,
   Enum,
-} from 'mikro-orm';
+} from '@mikro-orm/core';
 import { Book } from './book.entity';
 import { BaseEntity } from './base.entity';
 import { Address } from './address.entity';

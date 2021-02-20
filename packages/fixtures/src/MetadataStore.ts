@@ -6,7 +6,7 @@ import {
   DefaultMetadataStore,
   FixtureFactory as FF,
 } from 'class-fixtures-factory';
-import { MikroORM, Utils, EntityMetadata } from 'mikro-orm';
+import { MikroORM, Utils, EntityMetadata } from '@mikro-orm/core';
 
 export class MetadataStore extends BaseMetadataStore {
   private defaultStore = new DefaultMetadataStore(true);

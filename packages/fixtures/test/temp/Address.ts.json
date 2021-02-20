@@ -16,6 +16,7 @@
           "persist",
           "merge"
         ],
+        "strategy": "select-in",
         "type": "Author",
         "nullable": false,
         "owner": true,
@@ -23,6 +24,7 @@
       }
     },
     "hooks": {},
+    "primaryKeys": [],
     "indexes": [],
     "uniques": [],
     "path": "./test/entities/address.entity.ts",
@@ -34,5 +36,5 @@
     "collection": "address"
   },
   "origin": "./test/entities/address.entity.ts",
-  "hash": "0e804c1260ed15bfbd765db8da31b3cc"
+  "hash": "04c53f10b9fad2e3fff5cc3db44bf5cc"
 }

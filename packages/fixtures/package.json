@@ -1,5 +1,5 @@
 {
-  "version": "1.6.1",
+  "version": "1.7.1",
   "name": "@mikro-resources/fixtures",
   "description": "A mikro-orm helper to generate fixtures of your entities on the fly or for seeding your DB",
   "author": "CyriacBr",
@@ -39,11 +39,15 @@
   "module": "dist/fixtures.esm.js",
   "devDependencies": {
     "@cyriacbr/tsdx": "^0.12.35",
+    "@mikro-orm/core": "^4.0.0-alpha.0",
+    "@mikro-orm/mysql": "^4.0.0-alpha.0",
+    "@mikro-orm/reflection": "^4.0.0-alpha.0",
+    "@mikro-orm/sqlite": "^4.0.0-alpha.0",
     "@types/jest": "^25.1.3",
     "chalk": "^3.0.0",
+    "class-validator": "^0.12.2",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
-    "mikro-orm": "^3.4.1",
     "mysql2": "^2.1.0",
     "pkg-ok": "^2.3.1",
     "sqlite3": "^4.1.1",

@@ -29,6 +29,7 @@
           "persist",
           "merge"
         ],
+        "strategy": "select-in",
         "type": "Book"
       },
       "address": {
@@ -38,6 +39,7 @@
           "persist",
           "merge"
         ],
+        "strategy": "select-in",
         "type": "Address",
         "nullable": false,
         "owner": false,
@@ -45,6 +47,7 @@
       }
     },
     "hooks": {},
+    "primaryKeys": [],
     "indexes": [],
     "uniques": [],
     "path": "./test/entities/author.entity.ts",
@@ -56,5 +59,5 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "882b177efe08e3df9651cdb3ae6ecdbf"
+  "hash": "d2a55802908753453e44d5f3c1b6b4a9"
 }

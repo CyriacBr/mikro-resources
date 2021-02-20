@@ -5,7 +5,7 @@ import {
   EntityMetadata,
   EntityProperty,
   Configuration,
-} from 'mikro-orm';
+} from '@mikro-orm/core';
 import { MetadataStorage } from 'mikro-orm/dist/metadata';
 import * as path from 'path';
 import * as ts from 'typescript';
@@ -35,7 +35,7 @@ export class TypingsGenerator {
       v => v[0] === v[0].toUpperCase()
     );
     const imports: string[] = [
-      `import { Collection, Primary } from 'mikro-orm'`,
+      `import { Collection, Primary } from '@mikro-orm/core'`,
     ];
     const types: string[] = [
       `type OperatorMap<T> = {
