@@ -1,7 +1,13 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.7.0](https://github.com/CyriacBr/mikro-resources/compare/v1.6.1...v1.7.0) (2021-02-20)
+
+
+### Features
+
+* add MikroORM v4 support ([bf11f71](https://github.com/CyriacBr/mikro-resources/commit/bf11f715247f80fe572694b0b29a5c545a177da6))
 
 ## [1.6.1](https://github.com/CyriacBr/mikro-resources/compare/v1.6.0...v1.6.1) (2020-03-24)
 
