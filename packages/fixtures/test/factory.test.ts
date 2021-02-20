@@ -94,6 +94,22 @@ describe(`Factory`, () => {
     expect(author.address.city).toBe('ReactCity');
   });
 
+  it(`make().with().many()`, () => {
+    const authors = factory
+      .make(Author)
+      .with({
+        age: 500,
+        name: 'Foo',
+      })
+      .many(5);
+
+    for (const author of authors) {
+      expect(author).toBeInstanceOf(Author);
+      expect(author.age).toBe(500);
+      expect(author.name).toBe('Foo');
+    }
+  });
+
   describe(`scalar properties`, () => {
     let author: Author;
 
