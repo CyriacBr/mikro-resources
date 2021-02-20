@@ -13,7 +13,7 @@ describe(`Factory`, () => {
     orm = await MikroORM.init(ormConfig as any);
     await orm.getSchemaGenerator().dropSchema();
     await orm.getSchemaGenerator().createSchema();
-    factory = new FixtureFactory(orm, { logging: true });
+    factory = new FixtureFactory(orm);
   });
 
   afterAll(() => orm.close());
