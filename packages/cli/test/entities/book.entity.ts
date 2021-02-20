@@ -7,7 +7,7 @@ import {
   Entity,
   ManyToMany,
   Collection,
-} from 'mikro-orm';
+} from '@mikro-orm/core';
 import { Author } from './author.entity';
 import { BaseEntity } from './base.entity';
 import { BookTag } from './book-tag.entity';

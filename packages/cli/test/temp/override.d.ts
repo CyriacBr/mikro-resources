@@ -1,4 +1,4 @@
-import { Collection, Primary } from 'mikro-orm';
+import { Collection, Primary } from '@mikro-orm/core';
 import { Author } from '../entities/author.entity';
 import { Mood } from '../entities/author.entity';
 import { Book } from '../entities/book.entity';
