@@ -34,6 +34,9 @@
     "start": "cyriacbr-tsdx watch",
     "build": "cyriacbr-tsdx build",
     "test": "jest",
+    "release:first": "standard-version --first-release",
+    "release": "standard-version",
+    "release:publish": "git push --follow-tags origin develop && yarn publish",
     "prepublish": "yarn build && pkg-ok"
   },
   "module": "dist/fixtures.esm.js",
