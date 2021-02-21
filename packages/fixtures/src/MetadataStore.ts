@@ -4,7 +4,6 @@ import {
   ClassMetadata,
   PropertyMetadata,
   DefaultMetadataStore,
-  FixtureFactory as FF,
 } from 'class-fixtures-factory';
 import { MikroORM, Utils, EntityMetadata } from '@mikro-orm/core';
 
