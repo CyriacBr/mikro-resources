@@ -2840,10 +2840,10 @@ ci-info@^2.0.0:
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
 
-class-fixtures-factory@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/class-fixtures-factory/-/class-fixtures-factory-1.3.0.tgz#572888c2fc99f0519b71fc868e7808a9727eefd7"
-  integrity sha512-UdFgFNZSlWOvdNnzXS0B7JKd87ziCX6Z9ivpLcw5UOg0Bbd0HMyB2WU2s4CmMLeDAxNXbjTfj2xea1ETRIDOrQ==
+class-fixtures-factory@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/class-fixtures-factory/-/class-fixtures-factory-1.6.1.tgz#d98ae6a52a82cfbdb9d123a6076c6231076cb91a"
+  integrity sha512-ZsDvCvab66Q/j9w68CGgxG6tA80IvpLuS93c/F0/ZhqgM3fgeg/Mftdyf8MXIBXWTdH2CHt5QNSxZzIesY65pw==
   dependencies:
     "@types/faker" "^4.1.10"
     "@types/treeify" "^1.0.0"

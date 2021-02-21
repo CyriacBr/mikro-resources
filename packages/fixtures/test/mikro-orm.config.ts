@@ -8,6 +8,11 @@ import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { Options } from '@mikro-orm/core';
 import { WithSpecialType } from './entities/with-special-type.entity';
 import { WithSpecialTypeFixed } from './entities/with-special-type-fixed.entity';
+import {
+  AuthorWithCustomization,
+  Book2,
+  Address2,
+} from './entities/author-with-customization';
 
 export default <Options>{
   metadataProvider: TsMorphMetadataProvider,
@@ -20,6 +25,9 @@ export default <Options>{
     BookTag,
     WithSpecialType,
     WithSpecialTypeFixed,
+    AuthorWithCustomization,
+    Book2,
+    Address2,
   ],
   // dbName: 'test.db',
   // type: 'sqlite',

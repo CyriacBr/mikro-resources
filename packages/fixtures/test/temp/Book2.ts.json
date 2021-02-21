@@ -1,0 +1,31 @@
+{
+  "data": {
+    "className": "Book2",
+    "properties": {
+      "author": {
+        "name": "author",
+        "reference": "m:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "strategy": "select-in",
+        "type": "AuthorWithCustomization",
+        "nullable": false
+      }
+    },
+    "hooks": {},
+    "primaryKeys": [],
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/author-with-customization.ts",
+    "name": "Book2",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "book2"
+  },
+  "origin": "./test/entities/author-with-customization.ts",
+  "hash": "76e88b0f98a8b9d777424336c55604fd"
+}

@@ -6,6 +6,9 @@ import { Book } from './entities/book.entity';
 import { FixtureFactory } from '../src/FixtureFactory';
 import { WithSpecialType } from './entities/with-special-type.entity';
 import { WithSpecialTypeFixed } from './entities/with-special-type-fixed.entity';
+import { AuthorWithCustomization } from './entities/author-with-customization';
+
+jest.setTimeout(20000);
 
 describe(`Factory`, () => {
   let orm: MikroORM;
@@ -186,6 +189,42 @@ describe(`Factory`, () => {
     it(`m:n`, () => {
       const book = factory.make(Book).one();
       expect(book.tags).toBeInstanceOf(Collection);
+    });
+  });
+
+  describe(`with customization`, () => {
+    let author: AuthorWithCustomization;
+
+    beforeAll(() => {
+      author = factory.make(AuthorWithCustomization).one();
+    });
+
+    it(`@Fixture(faker => string)`, () => {
+      expect(author.firstName).toBeDefined();
+      expect(typeof author.firstName === 'string').toBe(true);
+    });
+
+    it(`@Fixture(string)`, () => {
+      expect(author.lastName).toBeDefined();
+      expect(typeof author.lastName === 'string').toBe(true);
+    });
+
+    it(`@Fixture({ type: () => any })`, () => {
+      expect(author.fullName).toBeDefined();
+      expect(typeof author.fullName === 'string').toBe(true);
+    });
+
+    it(`@Fixture(() => any)`, () => {
+      expect(author.age).toBe(24);
+    });
+
+    it(`@Fixture({ min, max })`, () => {
+      expect(author.books).toBeDefined();
+      expect(author.books.length).toBe(5);
+    });
+
+    it(`@Fixture({ ignore: true })`, () => {
+      expect(author.address).toBeUndefined();
     });
   });
 });

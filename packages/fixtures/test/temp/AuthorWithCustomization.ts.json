@@ -1,0 +1,71 @@
+{
+  "data": {
+    "className": "AuthorWithCustomization",
+    "properties": {
+      "firstName": {
+        "name": "firstName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      "lastName": {
+        "name": "lastName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      "fullName": {
+        "name": "fullName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      "age": {
+        "name": "age",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      "books": {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "strategy": "select-in",
+        "type": "Book2"
+      },
+      "address": {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "strategy": "select-in",
+        "type": "Address2",
+        "nullable": false,
+        "owner": false,
+        "unique": false
+      }
+    },
+    "hooks": {},
+    "primaryKeys": [],
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/author-with-customization.ts",
+    "name": "AuthorWithCustomization",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "author_with_customization"
+  },
+  "origin": "./test/entities/author-with-customization.ts",
+  "hash": "76e88b0f98a8b9d777424336c55604fd"
+}

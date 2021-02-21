@@ -63,6 +63,6 @@
     ]
   },
   "dependencies": {
-    "class-fixtures-factory": "^1.3.0"
+    "class-fixtures-factory": "^1.6.1"
   }
 }

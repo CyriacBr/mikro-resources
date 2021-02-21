@@ -1,0 +1,33 @@
+{
+  "data": {
+    "className": "Address2",
+    "properties": {
+      "author": {
+        "name": "author",
+        "reference": "1:1",
+        "cascade": [
+          "persist",
+          "merge"
+        ],
+        "strategy": "select-in",
+        "type": "AuthorWithCustomization",
+        "nullable": false,
+        "owner": true,
+        "unique": true
+      }
+    },
+    "hooks": {},
+    "primaryKeys": [],
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/author-with-customization.ts",
+    "name": "Address2",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "address2"
+  },
+  "origin": "./test/entities/author-with-customization.ts",
+  "hash": "76e88b0f98a8b9d777424336c55604fd"
+}

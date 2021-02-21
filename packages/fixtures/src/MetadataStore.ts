@@ -35,7 +35,9 @@ export class MetadataStore extends BaseMetadataStore {
           if (prop.type === 'method') return null;
           return <PropertyMetadata>{
             name: prop.name,
-            type: prop.type,
+            type: defaultMetaProp?.typeFromDecorator
+              ? defaultMetaProp.type
+              : prop.type,
             array: ['1:m', 'm:n'].includes(prop.reference),
             enum: prop.enum,
             ignore: defaultMetaProp?.ignore,
