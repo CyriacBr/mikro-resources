@@ -1,0 +1,27 @@
+{
+  "data": {
+    "className": "WithSpecialType",
+    "properties": {
+      "weirdScalar": {
+        "name": "weirdScalar",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "\"a\" | \"b\" | \"c\""
+      }
+    },
+    "hooks": {},
+    "primaryKeys": [],
+    "indexes": [],
+    "uniques": [],
+    "path": "./test/entities/with-special-type.entity.ts",
+    "name": "WithSpecialType",
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "collection": "with_special_type"
+  },
+  "origin": "./test/entities/with-special-type.entity.ts",
+  "hash": "fe01606c5d56226f3e5718c5fb56e38e"
+}

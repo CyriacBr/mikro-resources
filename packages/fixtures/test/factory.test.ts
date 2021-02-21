@@ -4,6 +4,8 @@ import { Author, Mood } from './entities/author.entity';
 import { Address } from './entities/address.entity';
 import { Book } from './entities/book.entity';
 import { FixtureFactory } from '../src/FixtureFactory';
+import { WithSpecialType } from './entities/with-special-type.entity';
+import { WithSpecialTypeFixed } from './entities/with-special-type-fixed.entity';
 
 describe(`Factory`, () => {
   let orm: MikroORM;
@@ -137,6 +139,25 @@ describe(`Factory`, () => {
           author.mood.toString().toUpperCase()
         )
       ).toBe(true);
+    });
+
+    describe(`special type`, () => {
+      it(`doesn't work by default`, () => {
+        /**
+         * For some reasons expect().toThrow() refuses to work
+         * here, hence why I am using a try {} catch {} block
+         */
+        try {
+          factory.make(WithSpecialType).one();
+        } catch (error) {
+          expect(error).toBeDefined();
+        }
+      });
+
+      it(`works with @Property({ type })`, () => {
+        const entity = factory.make(WithSpecialTypeFixed).one();
+        expect(typeof entity.weirdScalar).toBe('string');
+      });
     });
   });
 

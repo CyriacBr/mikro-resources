@@ -2,9 +2,11 @@
 
 # @mikro-resources/fixtures
 
-This package generates fixtures of your mikro-orm entities on the fly, using [`class-fixtures-factory`](https://github.com/CyriacBr/class-fixtures-factory).  
-`@mikro-resources/fixtures` will automatically handle all fields and relations of your entities, but you can provide custom values as well.  
-The API is fully typed.
+This package generates fixtures of your MikroORM entities on the fly, using their metadata from MikroORM's metadata provider.
+This relies on [`class-fixtures-factory`](https://github.com/CyriacBr/class-fixtures-factory), so all of its features are supported too.
+`@mikro-resources/fixtures` will automatically handle all fields and relations of your entities, but you can provide custom values as well. 
+
+This package can be used, both for seeding and generating fixtures for your tests.
 
 ## Installation
 
@@ -46,6 +48,25 @@ const agedAuthor = factory
     address: specialAddr, // any actual address entity object
   })
   .one();
+```
+
+### MikroORM Metadata Provider
+
+This library relies first on MikroORM's metadata provider. You're expected to provides correct typings of your entities property for both Mikro ORM and this library to work.
+
+```ts
+class Author {
+  /** 
+   * This is bad. You'll probably end up with the "json" type in your metadata,
+   * and this library will not work
+  */
+  @Property()
+  mood: 'happy' | 'sad';
+
+  // Correct way
+  @Property({ type: 'string' })
+  mood: 'happy' | 'sad';
+}
 ```
 
 ### Customization

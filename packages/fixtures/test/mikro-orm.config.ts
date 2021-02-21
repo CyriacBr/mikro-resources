@@ -6,10 +6,21 @@ import { WithBadEnum } from './entities/with-bad-enum.entity';
 import { BookTag } from './entities/book-tag.entity';
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import { Options } from '@mikro-orm/core';
+import { WithSpecialType } from './entities/with-special-type.entity';
+import { WithSpecialTypeFixed } from './entities/with-special-type-fixed.entity';
 
 export default <Options>{
   metadataProvider: TsMorphMetadataProvider,
-  entities: [BaseEntity, Author, Book, Address, WithBadEnum, BookTag],
+  entities: [
+    BaseEntity,
+    Author,
+    Book,
+    Address,
+    WithBadEnum,
+    BookTag,
+    WithSpecialType,
+    WithSpecialTypeFixed,
+  ],
   // dbName: 'test.db',
   // type: 'sqlite',
   dbName: 'mikro-resources-fixtures',
