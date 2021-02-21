@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/CyriacBr/mikro-resources/compare/v1.7.1...v1.8.0) (2021-02-21)
+
+
+### Features
+
+* add custom type support with @Fixture ([0f79c7e](https://github.com/CyriacBr/mikro-resources/commit/0f79c7ebf9ae73a37c35be9ca1ddb31809342013))
+
 ### [1.7.1](https://github.com/CyriacBr/mikro-resources/compare/v1.7.0...v1.7.1) (2021-02-20)
 
 ## [1.7.0](https://github.com/CyriacBr/mikro-resources/compare/v1.6.1...v1.7.0) (2021-02-20)
