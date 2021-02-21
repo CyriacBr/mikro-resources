@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "Author",
+    "propertyOrder": {},
     "properties": {
       "name": {
         "name": "name",
@@ -26,38 +26,100 @@
         "name": "books",
         "reference": "1:m",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "Book"
       },
       "address": {
         "name": "address",
         "reference": "1:1",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "Address",
         "nullable": false,
         "owner": false,
         "unique": false
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "name",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      {
+        "name": "age",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      {
+        "name": "mood",
+        "reference": "scalar",
+        "enum": true,
+        "type": "Mood"
+      },
+      {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Book"
+      },
+      {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Address",
+        "nullable": false,
+        "owner": false,
+        "unique": false
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "Author",
     "path": "./test/entities/author.entity.ts",
     "name": "Author",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [
+      {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Book"
+      },
+      {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Address",
+        "nullable": false,
+        "owner": false,
+        "unique": false
+      }
+    ],
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "d2a55802908753453e44d5f3c1b6b4a9"
+  "hash": "f99a8e29666980ae9c09771cceea2bdb",
+  "version": "4.4.4"
 }

@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "BookTag",
+    "propertyOrder": {},
     "properties": {
       "label": {
         "name": "label",
@@ -13,26 +13,57 @@
         "name": "books",
         "reference": "m:n",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "Book",
         "fixedOrder": false
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "label",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      {
+        "name": "books",
+        "reference": "m:n",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Book",
+        "fixedOrder": false
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "BookTag",
     "path": "./test/entities/book-tag.entity.ts",
     "name": "BookTag",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [
+      {
+        "name": "books",
+        "reference": "m:n",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Book",
+        "fixedOrder": false
+      }
+    ],
     "collection": "book_tag"
   },
   "origin": "./test/entities/book-tag.entity.ts",
-  "hash": "678a59649d7f64670eb0f8951b20a99c"
+  "hash": "8cb3b97506c274515becc72d96bff818",
+  "version": "4.4.4"
 }

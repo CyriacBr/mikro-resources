@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "WithBadEnum",
+    "propertyOrder": {},
     "properties": {
       "enum": {
         "name": "enum",
@@ -9,18 +9,31 @@
         "type": "FooEnum"
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "enum",
+        "reference": "scalar",
+        "enum": true,
+        "type": "FooEnum"
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "WithBadEnum",
     "path": "./test/entities/with-bad-enum.entity.ts",
     "name": "WithBadEnum",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [],
     "collection": "with_bad_enum"
   },
   "origin": "./test/entities/with-bad-enum.entity.ts",
-  "hash": "25d6f01757f1e8153c9926f8487c3e1e"
+  "hash": "692d13e5c1f8e15601130fc58972c0a3",
+  "version": "4.4.4"
 }

@@ -1,33 +1,61 @@
 {
   "data": {
-    "className": "Address2",
+    "propertyOrder": {},
     "properties": {
       "author": {
         "name": "author",
         "reference": "1:1",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "AuthorWithCustomization",
         "nullable": false,
         "owner": true,
         "unique": true
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "author",
+        "reference": "1:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "AuthorWithCustomization",
+        "nullable": false,
+        "owner": true,
+        "unique": true
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "Address2",
     "path": "./test/entities/author-with-customization.ts",
     "name": "Address2",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [
+      {
+        "name": "author",
+        "reference": "1:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "AuthorWithCustomization",
+        "nullable": false,
+        "owner": true,
+        "unique": true
+      }
+    ],
     "collection": "address2"
   },
   "origin": "./test/entities/author-with-customization.ts",
-  "hash": "76e88b0f98a8b9d777424336c55604fd"
+  "hash": "e974e00841555774b8746e64db91a24d",
+  "version": "4.4.4"
 }

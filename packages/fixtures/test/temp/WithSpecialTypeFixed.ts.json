@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "WithSpecialTypeFixed",
+    "propertyOrder": {},
     "properties": {
       "weirdScalar": {
         "name": "weirdScalar",
@@ -10,18 +10,32 @@
         "setter": false
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "weirdScalar",
+        "reference": "scalar",
+        "type": "string",
+        "getter": false,
+        "setter": false
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "WithSpecialTypeFixed",
     "path": "./test/entities/with-special-type-fixed.entity.ts",
     "name": "WithSpecialTypeFixed",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [],
     "collection": "with_special_type_fixed"
   },
   "origin": "./test/entities/with-special-type-fixed.entity.ts",
-  "hash": "df4bfd78b621feb68f02ce4c42f389be"
+  "hash": "7afd34265f3aa702d65e88f136dcca36",
+  "version": "4.4.4"
 }

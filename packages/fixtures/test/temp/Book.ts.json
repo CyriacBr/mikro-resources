@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "Book",
+    "propertyOrder": {},
     "properties": {
       "name": {
         "name": "name",
@@ -26,10 +26,8 @@
         "name": "author",
         "reference": "m:1",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "Author",
         "nullable": false
       },
@@ -37,27 +35,91 @@
         "name": "tags",
         "reference": "m:n",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "owner": true,
         "type": "BookTag",
         "fixedOrder": false
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "name",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      {
+        "name": "onSale",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "boolean"
+      },
+      {
+        "name": "type",
+        "reference": "scalar",
+        "enum": true,
+        "type": "BookType"
+      },
+      {
+        "name": "author",
+        "reference": "m:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Author",
+        "nullable": false
+      },
+      {
+        "name": "tags",
+        "reference": "m:n",
+        "cascade": [
+          "persist"
+        ],
+        "owner": true,
+        "type": "BookTag",
+        "fixedOrder": false
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "Book",
     "path": "./test/entities/book.entity.ts",
     "name": "Book",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [
+      {
+        "name": "author",
+        "reference": "m:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Author",
+        "nullable": false
+      },
+      {
+        "name": "tags",
+        "reference": "m:n",
+        "cascade": [
+          "persist"
+        ],
+        "owner": true,
+        "type": "BookTag",
+        "fixedOrder": false
+      }
+    ],
     "collection": "book"
   },
   "origin": "./test/entities/book.entity.ts",
-  "hash": "df0e94dae0c58331d7196076c30ac91c"
+  "hash": "4f7ab2339569ac95be3eb1e8712e06e3",
+  "version": "4.4.4"
 }

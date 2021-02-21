@@ -1,31 +1,55 @@
 {
   "data": {
-    "className": "Book2",
+    "propertyOrder": {},
     "properties": {
       "author": {
         "name": "author",
         "reference": "m:1",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "AuthorWithCustomization",
         "nullable": false
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "author",
+        "reference": "m:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "AuthorWithCustomization",
+        "nullable": false
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "Book2",
     "path": "./test/entities/author-with-customization.ts",
     "name": "Book2",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [
+      {
+        "name": "author",
+        "reference": "m:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "AuthorWithCustomization",
+        "nullable": false
+      }
+    ],
     "collection": "book2"
   },
   "origin": "./test/entities/author-with-customization.ts",
-  "hash": "76e88b0f98a8b9d777424336c55604fd"
+  "hash": "e974e00841555774b8746e64db91a24d",
+  "version": "4.4.4"
 }

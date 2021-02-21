@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "BaseEntity",
+    "propertyOrder": {},
     "properties": {
       "id": {
         "name": "id",
@@ -23,18 +23,45 @@
         "type": "Date"
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "id",
+        "reference": "scalar",
+        "primary": true,
+        "type": "number"
+      },
+      {
+        "name": "createdAt",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "Date"
+      },
+      {
+        "name": "updatedAt",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "Date"
+      }
+    ],
     "primaryKeys": [
       "id"
     ],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "BaseEntity",
     "path": "./test/entities/base.entity.ts",
+    "abstract": true,
     "constructorParams": [],
     "toJsonParams": [],
     "useCache": true,
-    "compositePK": false
+    "compositePK": false,
+    "relations": []
   },
   "origin": "./test/entities/base.entity.ts",
-  "hash": "6e6cd34b538f6b54b5e26379144fd808"
+  "hash": "54caf8af60de6563baf8c73a1c19de60",
+  "version": "4.4.4"
 }

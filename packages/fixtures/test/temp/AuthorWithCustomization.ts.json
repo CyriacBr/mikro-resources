@@ -1,6 +1,6 @@
 {
   "data": {
-    "className": "AuthorWithCustomization",
+    "propertyOrder": {},
     "properties": {
       "firstName": {
         "name": "firstName",
@@ -34,38 +34,108 @@
         "name": "books",
         "reference": "1:m",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "Book2"
       },
       "address": {
         "name": "address",
         "reference": "1:1",
         "cascade": [
-          "persist",
-          "merge"
+          "persist"
         ],
-        "strategy": "select-in",
         "type": "Address2",
         "nullable": false,
         "owner": false,
         "unique": false
       }
     },
-    "hooks": {},
+    "props": [
+      {
+        "name": "firstName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      {
+        "name": "lastName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      {
+        "name": "fullName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      {
+        "name": "age",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "number"
+      },
+      {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Book2"
+      },
+      {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Address2",
+        "nullable": false,
+        "owner": false,
+        "unique": false
+      }
+    ],
     "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
     "indexes": [],
     "uniques": [],
+    "className": "AuthorWithCustomization",
     "path": "./test/entities/author-with-customization.ts",
     "name": "AuthorWithCustomization",
+    "abstract": false,
     "constructorParams": [],
     "toJsonParams": [],
     "extends": "BaseEntity",
     "useCache": true,
+    "relations": [
+      {
+        "name": "books",
+        "reference": "1:m",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Book2"
+      },
+      {
+        "name": "address",
+        "reference": "1:1",
+        "cascade": [
+          "persist"
+        ],
+        "type": "Address2",
+        "nullable": false,
+        "owner": false,
+        "unique": false
+      }
+    ],
     "collection": "author_with_customization"
   },
   "origin": "./test/entities/author-with-customization.ts",
-  "hash": "76e88b0f98a8b9d777424336c55604fd"
+  "hash": "e974e00841555774b8746e64db91a24d",
+  "version": "4.4.4"
 }
