@@ -16,11 +16,6 @@
     "lint": "cyriacbr-tsdx lint",
     "prepare": "cyriacbr-tsdx build"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "cyriacbr-tsdx lint"
-    }
-  },
   "prettier": {
     "printWidth": 80,
     "semi": true,
@@ -33,7 +28,6 @@
   "devDependencies": {
     "@cyriacbr/tsdx": "^0.12.35",
     "@types/jest": "^25.1.4",
-    "husky": "^4.2.3",
     "mikro-orm": "^3.4.1",
     "tslib": "^1.11.1",
     "typescript": "^3.8.3"

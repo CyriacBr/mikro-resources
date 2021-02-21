@@ -8,25 +8,26 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "test": "lerna run test",
-    "lint": "eslint . --ext ts"
+    "lint": "eslint . --ext ts",
+    "postinstall": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.4",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^2.16.0",
-    "@typescript-eslint/parser": "^2.16.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
     "conventional-changelog-cli": "^2.0.31",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jest": "^23.6.0",
-    "eslint-plugin-jest-formatting": "^1.2.0",
+    "eslint-plugin-jest": "^24.1.5",
+    "eslint-plugin-jest-formatting": "^2.0.1",
     "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.2.0",
+    "husky": "^5.0.9",
     "lerna": "^3.20.2",
-    "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1",
-    "standard-version": "8.0.1"
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "standard-version": "9.1.1"
   },
   "husky": {
     "hooks": {
@@ -42,8 +43,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "eslintConfig": {
