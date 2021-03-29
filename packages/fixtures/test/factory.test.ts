@@ -55,6 +55,15 @@ describe(`Factory`, () => {
     expect(await orm.em.getRepository(Author).count()).toBe(currCount + 1);
   });
 
+  it(`make().with().oneAndPersist()`, async () => {
+    const result = factory.make(Author).with({ age: 30 });
+    expect(result.oneAndPersist).toBeInstanceOf(Function);
+
+    const author = await result.oneAndPersist();
+    expect(author).toBeInstanceOf(Author);
+    expect(author.age).toBe(30);
+  });
+
   it(`make().manyAndPersist()`, async () => {
     const result = factory.make(Author);
     expect(result.manyAndPersist).toBeInstanceOf(Function);
@@ -65,6 +74,15 @@ describe(`Factory`, () => {
     expect(authors.length).toBe(3);
     expect(authors[0]).toBeInstanceOf(Author);
     expect(await orm.em.getRepository(Author).count()).toBe(currCount + 3);
+  });
+
+  it(`make().with().manyAndPersist()`, async () => {
+    const result = factory.make(Author).with({ age: 30 });
+    expect(result.manyAndPersist).toBeInstanceOf(Function);
+
+    const authors = await result.manyAndPersist(3);
+    const ages = authors.map((author) => author.age);
+    expect(ages).toMatchObject([30, 30, 30]);
   });
 
   it(`make().ignore()`, () => {
