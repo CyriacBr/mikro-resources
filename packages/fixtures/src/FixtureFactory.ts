@@ -40,7 +40,7 @@ export class FixtureFactory {
   private registerAllEntities() {
     const metadata = this.orm.getMetadata();
     const entityNames = Object.keys(metadata.getAll()).filter(
-      v => v[0] === v[0].toUpperCase()
+      (v) => v[0] === v[0].toUpperCase()
     );
     for (const name of entityNames) {
       const classType = metadata.get(name).class;
