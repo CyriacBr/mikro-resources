@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/CyriacBr/mikro-resources/compare/v1.8.1...v1.9.0) (2021-04-03)
+
+
+### Features
+
+* factory method chaining to allow .with and .ignore into .persist methods ([#12](https://github.com/CyriacBr/mikro-resources/issues/12)) ([3ce4660](https://github.com/CyriacBr/mikro-resources/commit/3ce46602d286494746ed0ac2839837ea6c844dbf)), closes [#11](https://github.com/CyriacBr/mikro-resources/issues/11)
+
 ### [1.8.1](https://github.com/CyriacBr/mikro-resources/compare/v1.8.0...v1.8.1) (2021-02-21)
 
 ## [1.8.0](https://github.com/CyriacBr/mikro-resources/compare/v1.7.1...v1.8.0) (2021-02-21)
