@@ -86,10 +86,7 @@ describe(`Factory`, () => {
   });
 
   it(`make().ignore()`, () => {
-    const author = factory
-      .make(Author)
-      .ignore('address', 'age')
-      .one();
+    const author = factory.make(Author).ignore('address', 'age').one();
 
     expect(author).toBeInstanceOf(Author);
     expect(author.address).toBeUndefined();

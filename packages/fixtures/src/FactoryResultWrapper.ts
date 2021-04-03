@@ -9,21 +9,17 @@ type DeepPartial<T> = T extends unknown
     };
 
 export class FactoryResultWrapper<T> {
-  private factory: FixtureFactory;
-  private entityName: EntityClass<T>;
   private input?: DeepPartial<T>;
-  private props: (keyof T)[];
-  private orm: MikroORM;
+  private propsToIgnore: (keyof T)[] = [];
 
   constructor(
-    orm: MikroORM,
-    factory: FixtureFactory,
-    entityName: EntityClass<T>
+    private orm: MikroORM,
+    private factory: FixtureFactory,
+    private entityName: EntityClass<T>
   ) {
     this.orm = orm;
     this.factory = factory;
     this.entityName = entityName;
-    this.props = [];
   }
 
   with(input: DeepPartial<T>): FactoryResultWrapper<T> {
@@ -32,7 +28,7 @@ export class FactoryResultWrapper<T> {
   }
 
   ignore(...props: (keyof T)[]): FactoryResultWrapper<T> {
-    this.props = props;
+    this.propsToIgnore = props;
     return this;
   }
 
@@ -63,8 +59,8 @@ export class FactoryResultWrapper<T> {
       result = result.with(this.input as any);
     }
 
-    if (this.props) {
-      result = result.ignore(...this.props);
+    if (this.propsToIgnore) {
+      result = result.ignore(...this.propsToIgnore);
     }
 
     return result;
