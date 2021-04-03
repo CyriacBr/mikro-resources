@@ -56,6 +56,6 @@
     "collection": "address2"
   },
   "origin": "./test/entities/author-with-customization.ts",
-  "hash": "e974e00841555774b8746e64db91a24d",
-  "version": "4.4.4"
+  "hash": "64b3b4aef2533db3caa3a60f5593bc65",
+  "version": "4.5.1"
 }

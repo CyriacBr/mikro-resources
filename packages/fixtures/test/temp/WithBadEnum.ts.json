@@ -6,7 +6,12 @@
         "name": "enum",
         "reference": "scalar",
         "enum": true,
-        "type": "FooEnum"
+        "type": "FooEnum",
+        "items": [
+          0,
+          1,
+          2
+        ]
       }
     },
     "props": [
@@ -14,7 +19,12 @@
         "name": "enum",
         "reference": "scalar",
         "enum": true,
-        "type": "FooEnum"
+        "type": "FooEnum",
+        "items": [
+          0,
+          1,
+          2
+        ]
       }
     ],
     "primaryKeys": [],
@@ -34,6 +44,6 @@
     "collection": "with_bad_enum"
   },
   "origin": "./test/entities/with-bad-enum.entity.ts",
-  "hash": "692d13e5c1f8e15601130fc58972c0a3",
-  "version": "4.4.4"
+  "hash": "c5992c359ccd0da85483e8a91917b51c",
+  "version": "4.5.1"
 }

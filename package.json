@@ -24,7 +24,7 @@
     "eslint-plugin-jest-formatting": "^2.0.1",
     "eslint-plugin-prettier": "^3.1.2",
     "husky": "^5.0.9",
-    "lerna": "^3.20.2",
+    "lerna": "^4.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
     "standard-version": "9.1.1"

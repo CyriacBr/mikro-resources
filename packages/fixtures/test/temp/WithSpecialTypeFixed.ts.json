@@ -36,6 +36,6 @@
     "collection": "with_special_type_fixed"
   },
   "origin": "./test/entities/with-special-type-fixed.entity.ts",
-  "hash": "7afd34265f3aa702d65e88f136dcca36",
-  "version": "4.4.4"
+  "hash": "138b14b6936cd86f31328185643e53ca",
+  "version": "4.5.1"
 }

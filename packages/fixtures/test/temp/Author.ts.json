@@ -20,7 +20,12 @@
         "name": "mood",
         "reference": "scalar",
         "enum": true,
-        "type": "Mood"
+        "type": "Mood",
+        "items": [
+          "good",
+          "bad",
+          "neutral"
+        ]
       },
       "books": {
         "name": "books",
@@ -61,7 +66,12 @@
         "name": "mood",
         "reference": "scalar",
         "enum": true,
-        "type": "Mood"
+        "type": "Mood",
+        "items": [
+          "good",
+          "bad",
+          "neutral"
+        ]
       },
       {
         "name": "books",
@@ -120,6 +130,6 @@
     "collection": "author"
   },
   "origin": "./test/entities/author.entity.ts",
-  "hash": "f99a8e29666980ae9c09771cceea2bdb",
-  "version": "4.4.4"
+  "hash": "c8bdcce4024158e0d37809a8017304ef",
+  "version": "4.5.1"
 }

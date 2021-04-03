@@ -64,6 +64,6 @@
     "collection": "book_tag"
   },
   "origin": "./test/entities/book-tag.entity.ts",
-  "hash": "8cb3b97506c274515becc72d96bff818",
-  "version": "4.4.4"
+  "hash": "41889c7cfdefba4ca8b301c6d7962f2a",
+  "version": "4.5.1"
 }

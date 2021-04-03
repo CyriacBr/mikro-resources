@@ -70,6 +70,6 @@
     "collection": "address"
   },
   "origin": "./test/entities/address.entity.ts",
-  "hash": "d50ba58815e80910294ca9f1eb302a87",
-  "version": "4.4.4"
+  "hash": "35d3742dca99b6268d177b16f5d29332",
+  "version": "4.5.1"
 }
