@@ -1,0 +1,69 @@
+{
+  "data": {
+    "propertyOrder": {},
+    "properties": {
+      "firstName": {
+        "name": "firstName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      "lastName": {
+        "name": "lastName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      "emailAddress": {
+        "name": "emailAddress",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      }
+    },
+    "props": [
+      {
+        "name": "firstName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      {
+        "name": "lastName",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      },
+      {
+        "name": "emailAddress",
+        "reference": "scalar",
+        "getter": false,
+        "setter": false,
+        "type": "string"
+      }
+    ],
+    "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "className": "Profile",
+    "path": "./test/entities/profile.entity.ts",
+    "name": "Profile",
+    "embeddable": true,
+    "abstract": false,
+    "constructorParams": [],
+    "toJsonParams": [],
+    "useCache": true,
+    "relations": [],
+    "collection": "profile"
+  },
+  "origin": "./test/entities/profile.entity.ts",
+  "hash": "250bb9ee472a9fd9864259db6090675e",
+  "version": "4.5.1"
+}

@@ -13,6 +13,8 @@ import {
   Book2,
   Address2,
 } from './entities/author-with-customization';
+import { Profile } from './entities/profile.entity';
+import { User } from './entities/user.entity';
 
 export default <Options>{
   metadataProvider: TsMorphMetadataProvider,
@@ -28,6 +30,8 @@ export default <Options>{
     AuthorWithCustomization,
     Book2,
     Address2,
+    User,
+    Profile,
   ],
   dbName: 'test.db',
   type: 'sqlite',

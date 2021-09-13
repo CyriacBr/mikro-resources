@@ -7,6 +7,7 @@ import { FixtureFactory } from '../src/FixtureFactory';
 import { WithSpecialType } from './entities/with-special-type.entity';
 import { WithSpecialTypeFixed } from './entities/with-special-type-fixed.entity';
 import { AuthorWithCustomization } from './entities/author-with-customization';
+import { User } from './entities/user.entity';
 
 jest.setTimeout(20000);
 
@@ -240,6 +241,35 @@ describe(`Factory`, () => {
 
     it(`@Fixture({ ignore: true })`, () => {
       expect(author.address).toBeUndefined();
+    });
+  });
+
+  describe('@Embeddable({ object: true }) [for mongodb subdocuments]', () => {
+    let user: User;
+
+    beforeAll(async () => {
+      // We can't be "connected" for this, as sqlite does not support embedded
+      // entities this way, but we can still access the metadata facilities of
+      // the EntityManager.
+      await orm.close();
+      orm = await MikroORM.init(ormConfig, false);
+      factory = factory = new FixtureFactory(orm);
+
+      user = factory.make(User).one();
+    });
+
+    it('populates the embeddable entity', () => {
+      expect(user.profile).toBeDefined();
+      expect(user.profile.firstName).toEqual(expect.any(String));
+      expect(user.profile.lastName).toEqual(expect.any(String));
+      expect(user.profile.emailAddress).toEqual(expect.any(String));
+    });
+
+    it('does not populate "prefixed" properties', () => {
+      const possiblyPrefixed = user as any;
+      expect(possiblyPrefixed.profile_firstName).not.toBeDefined();
+      expect(possiblyPrefixed.profile_lastName).not.toBeDefined();
+      expect(possiblyPrefixed.profile_emailAddress).not.toBeDefined();
     });
   });
 });

@@ -1,0 +1,41 @@
+{
+  "data": {
+    "propertyOrder": {},
+    "properties": {
+      "profile": {
+        "name": "profile",
+        "type": "Profile",
+        "reference": "embedded",
+        "object": true,
+        "prefix": true
+      }
+    },
+    "props": [
+      {
+        "name": "profile",
+        "type": "Profile",
+        "reference": "embedded",
+        "object": true,
+        "prefix": true
+      }
+    ],
+    "primaryKeys": [],
+    "filters": {},
+    "hooks": {},
+    "indexes": [],
+    "uniques": [],
+    "className": "User",
+    "path": "./test/entities/user.entity.ts",
+    "name": "User",
+    "abstract": false,
+    "constructorParams": [],
+    "toJsonParams": [],
+    "extends": "BaseEntity",
+    "useCache": true,
+    "relations": [],
+    "collection": "user"
+  },
+  "origin": "./test/entities/user.entity.ts",
+  "hash": "9c16b52762f9d4c922a0faa76b82a775",
+  "version": "4.5.1"
+}

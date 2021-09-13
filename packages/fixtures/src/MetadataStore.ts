@@ -5,7 +5,12 @@ import {
   PropertyMetadata,
   DefaultMetadataStore,
 } from 'class-fixtures-factory';
-import { MikroORM, Utils, EntityMetadata } from '@mikro-orm/core';
+import {
+  MikroORM,
+  Utils,
+  EntityMetadata,
+  ReferenceType,
+} from '@mikro-orm/core';
 
 export class MetadataStore extends BaseMetadataStore {
   private defaultStore = new DefaultMetadataStore(true);
@@ -32,6 +37,12 @@ export class MetadataStore extends BaseMetadataStore {
           );
           if (prop.primary) return null;
           if (prop.type === 'method') return null;
+          if (Array.isArray(prop.embedded)) {
+            const parent = meta.properties[prop.embedded[0]];
+            if (parent.reference === ReferenceType.EMBEDDED && parent.object) {
+              return null;
+            }
+          }
           return <PropertyMetadata>{
             name: prop.name,
             type: defaultMetaProp?.typeFromDecorator
