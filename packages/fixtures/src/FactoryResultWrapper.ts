@@ -2,11 +2,9 @@ import { FactoryResult, FixtureFactory } from 'class-fixtures-factory';
 import { EntityClass } from '@mikro-orm/core/typings';
 import { MikroORM } from '@mikro-orm/core';
 
-type DeepPartial<T> = T extends unknown
-  ? unknown
-  : {
-      [P in keyof T]?: DeepPartial<T[P]>;
-    };
+type DeepPartial<T> = {
+  [P in keyof T]?: DeepPartial<T[P]>;
+};
 
 export class FactoryResultWrapper<T> {
   private input?: DeepPartial<T>;
